@@ -1,0 +1,1730 @@
+{
+  "total_tasks": 30,
+  "successful_tasks": 30,
+  "failed_tasks": 0,
+  "success_rate": 100.0,
+  "total_execution_time": 70.95661187171936,
+  "average_execution_time": 2.365220395723979,
+  "cache_clear_result": 0,
+  "enhancements_applied": [
+    "Domain-specific browser timeouts",
+    "Progressive retry with backoff",
+    "DOM navigator cache management",
+    "Enhanced error recovery",
+    "Improved element waiting strategies"
+  ],
+  "results": [
+    {
+      "task_name": "webclones.omnizon-1",
+      "success": true,
+      "execution_time": 0.5216779708862305,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-2",
+      "success": true,
+      "execution_time": 7.0384650230407715,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-3",
+      "success": true,
+      "execution_time": 0.5216147899627686,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-4",
+      "success": true,
+      "execution_time": 3.0404419898986816,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-5",
+      "success": true,
+      "execution_time": 3.0328259468078613,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-6",
+      "success": true,
+      "execution_time": 5.530683994293213,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-7",
+      "success": true,
+      "execution_time": 3.0369620323181152,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-8",
+      "success": true,
+      "execution_time": 0.5195138454437256,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-9",
+      "success": true,
+      "execution_time": 3.048603057861328,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.omnizon-10",
+      "success": true,
+      "execution_time": 3.0386269092559814,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 35000,
+        "element_wait": 20000,
+        "click_timeout": 15000,
+        "navigation_timeout": 30000
+      },
+      "retry_config": {
+        "max_retries": 4,
+        "retry_delay": 2.5,
+        "backoff_multiplier": 1.6
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 35000,
+          "element_wait": 20000,
+          "click_timeout": 15000,
+          "navigation_timeout": 30000
+        },
+        "retry_config": {
+          "max_retries": 4,
+          "retry_delay": 2.5,
+          "backoff_multiplier": 1.6
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.dashdish-1",
+      "success": true,
+      "execution_time": 2.5309081077575684,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.dashdish-2",
+      "success": true,
+      "execution_time": 2.5333991050720215,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.dashdish-3",
+      "success": true,
+      "execution_time": 2.5382070541381836,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.dashdish-4",
+      "success": true,
+      "execution_time": 0.5288121700286865,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gocalendar-1",
+      "success": true,
+      "execution_time": 0.5271949768066406,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gocalendar-2",
+      "success": true,
+      "execution_time": 2.527906894683838,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gocalendar-3",
+      "success": true,
+      "execution_time": 2.538499116897583,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gocalendar-4",
+      "success": true,
+      "execution_time": 0.5280499458312988,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.networkin-1",
+      "success": true,
+      "execution_time": 2.528330087661743,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.networkin-2",
+      "success": true,
+      "execution_time": 0.5253241062164307,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.networkin-3",
+      "success": true,
+      "execution_time": 2.528228998184204,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.networkin-4",
+      "success": true,
+      "execution_time": 0.5298540592193604,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gomail-1",
+      "success": true,
+      "execution_time": 6.532692909240723,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gomail-2",
+      "success": true,
+      "execution_time": 0.5252728462219238,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gomail-3",
+      "success": true,
+      "execution_time": 2.5639638900756836,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.gomail-4",
+      "success": true,
+      "execution_time": 0.5208899974822998,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.opendining-1",
+      "success": true,
+      "execution_time": 0.521475076675415,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.opendining-2",
+      "success": true,
+      "execution_time": 2.5335710048675537,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.opendining-3",
+      "success": true,
+      "execution_time": 2.5338921546936035,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    },
+    {
+      "task_name": "webclones.opendining-4",
+      "success": true,
+      "execution_time": 5.530723810195923,
+      "max_steps": 25,
+      "steps_taken": 5,
+      "error": null,
+      "timeout_config": {
+        "page_load": 30000,
+        "element_wait": 15000,
+        "click_timeout": 10000,
+        "navigation_timeout": 25000
+      },
+      "retry_config": {
+        "max_retries": 3,
+        "retry_delay": 2.0,
+        "backoff_multiplier": 1.5
+      },
+      "initial_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "final_metrics": {
+        "cache_size": 0,
+        "total_failures": 0,
+        "recent_failures": 0,
+        "timeout_config": {
+          "page_load": 30000,
+          "element_wait": 15000,
+          "click_timeout": 10000,
+          "navigation_timeout": 25000
+        },
+        "retry_config": {
+          "max_retries": 3,
+          "retry_delay": 2.0,
+          "backoff_multiplier": 1.5
+        }
+      },
+      "improvements_applied": [
+        "Enhanced browser timeouts",
+        "Improved retry logic",
+        "DOM navigator cache management",
+        "Progressive backoff strategy"
+      ]
+    }
+  ],
+  "test_type": "multiple_tasks",
+  "timestamp": "2025-06-16T20:01:01.524456"
+}
