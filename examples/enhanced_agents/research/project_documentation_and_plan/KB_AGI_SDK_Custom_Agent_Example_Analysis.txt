@@ -1,0 +1,13 @@
+This file provides a summary for the `custom.py` example file found within the AGI SDK GitHub repository (https://github.com/agi-inc/agisdk).
+
+**`custom.py` Overview:**
+- The `custom.py` script is an example provided within the `example` directory of the AGI SDK <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- It is described as "a more complex example with a custom agent" compared to the `starter.py` example <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- This suggests that `custom.py` demonstrates more advanced techniques or a more complete implementation of an agent using the AGI SDK.
+- It serves as a reference for users looking to build their own sophisticated agents capable of interacting with web environments provided by the SDK.
+
+**Purpose in AGI SDK:**
+- To showcase how to develop a custom agent beyond a basic implementation.
+- To provide a template or starting point for users aiming to create agents with more intricate logic, potentially incorporating features like advanced decision-making, memory, or interaction patterns.
+
+Further details about the specific implementation within `custom.py` would require direct examination of the file's source code. This summary is based on its description within the AGI SDK's main README <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.

@@ -1,0 +1,7 @@
+The file `hackable.py` is located in the `example` directory of the AGI SDK and serves as a custom agent example. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+According to the main AGI SDK GitHub README <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>:
+- `hackable.py` is one of several custom agent examples provided, alongside `starter.py`, `custom.py`, and `nova.py`. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+- It is specifically mentioned as an example that can be configured for better performance and can be used as a starting point for developing custom agents. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+For more detailed information on running custom agents, including `hackable.py`, the AGI SDK documentation advises checking the `README.md` file located within the `example` folder of the repository. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>

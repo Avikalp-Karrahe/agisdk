@@ -1,0 +1,244 @@
+# AGI Inc. Interview Project - Comprehensive Plan & Research
+
+## 📋 Project Overview
+
+**Goal:** Create a custom Agent using the AGI SDK to benchmark performance on web tasks
+
+**Timeline:** 3 days from start date
+
+**Key Requirements:**
+- Develop a custom agent capable of performing web tasks
+- Utilize the AGI SDK to set up benchmarks (~20 minutes)
+- Benchmark agent on 112 tasks
+- Achieve minimum 30% benchmark score
+- Create private repository with access
+
+## 🎯 Success Metrics
+
+- **Target:** 100% accuracy on benchmark (or Top 3 on leaderboard for fast-track)
+- **Tasks:** Complete 112 web tasks or selected subset
+
+## 📚 Key Resources & Links Analysis
+
+### Primary Resources from PDF:
+1. **AGI SDK Repository**: `https://github.com/agi-inc/agisdk`
+2. **AGI SDK Documentation**: `https://github.com/agi-inc/agisdk/tree/main/docs`
+3. **AWS Nova Act**: `https://github.com/aws/nova-act`
+4. **Browser-Use Library**: `https://github.com/browser-use/browser-use`
+5. **Real Evals Platform**: `https://realevals.xyz`
+6. **AGI SDK Main Branch**: `https://github.com/agi-inc/agisdk/tree/main`
+7. **AGI SDK Examples**: `https://github.com/agi-inc/agisdk/tree/main/examples`
+
+### Detailed Resource Analysis:
+
+#### 1. AGI SDK (`agi-inc/agisdk`)
+**Purpose**: Building and evaluating AI browser agents
+
+**Key Features**:
+- Web replicas of real-world applications (Amazon, DoorDash, etc.)
+- Agent API for custom implementations
+- Leaderboard integration for benchmarking
+- Multi-model support (OpenAI, Anthropic, etc.)
+- 112 available tasks across different difficulty levels
+
+**Installation**: `pip install agisdk`
+
+**Usage Pattern**:
+```python
+from agisdk import AGIClient
+client = AGIClient(api_key="your_key")
+result = client.run_task(task_id, agent_function)
+```
+
+#### 2. AWS Nova Act (`aws/nova-act`)
+**Purpose**: Research preview SDK for building reliable web browser agents
+
+**Key Features**:
+- Breaks down complex workflows into smaller, manageable commands
+- Parallel session support for efficiency
+- Human-in-the-loop handling for complex scenarios
+- Integration with Amazon Bedrock and Model Context Protocol (MCP)
+
+**Use Cases**:
+- Enterprise-grade browser automation
+- Complex multi-step workflows
+- Production-ready agent deployment
+
+#### 3. Browser-Use (`browser-use/browser-use`)
+**Purpose**: Python library connecting AI agents with browsers for automation
+
+**Key Features**:
+- Automatic validation of agent actions
+- Hosted version available for testing
+- Web UI/Desktop App for development and testing
+- Integration with major LLMs (OpenAI, Anthropic)
+- Built on Playwright for robust browser control
+
+**Roadmap Includes**:
+- Enhanced agent memory and planning
+- Improved DOM extraction
+- Workflow optimization
+- Parallelization capabilities
+
+#### 4. REAL Evals (`realevals.xyz`)
+**Purpose**: Realistic evaluations for agents on complex, modern websites
+
+**Key Features**:
+- **Sandbox Environment**: Controlled testing with realistic website replicas
+- **Website Clones**: 11 major platforms including:
+  - StaynbAI (Airbnb clone)
+  - Omnizon (Amazon clone)
+  - DashDish (DoorDash clone)
+  - GoCalendar (Google Calendar clone)
+  - And 7 more major platform replicas
+
+**Technical Specifications**:
+- Modern web stack (React + Next.js)
+- Fully deterministic and replayable
+- Agent-friendly security posture
+- Cross-tab session persistence
+- Configurable accessibility features
+
+**Evaluation Framework**:
+- Easy, medium, hard task categories
+- Action and retrieval-based goals
+- LLM judging rubrics for retrieval tasks
+- Framework agnostic (supports any agent system)
+- Playwright SDK available
+
+### 5. Example Implementations
+
+#### Custom Agent Example
+**URL:** https://github.com/agi-inc/agisdk/blob/main/example/custom.py
+**Purpose:** Starting point for custom agent development
+**What to Research:**
+- Basic agent structure
+- Required methods and interfaces
+- Configuration patterns
+
+#### Hackable Agent Example
+**URL:** https://github.com/agi-inc/agisdk/blob/main/example/hackable.py
+**Purpose:** More flexible starting point for modifications
+**What to Research:**
+- Advanced customization options
+- Extension points
+- Modification patterns
+
+## 🚀 Implementation Strategy
+
+### Phase 1: Research & Setup (Day 1 Morning)
+1. **Environment Setup**
+   - Install AGI SDK
+   - Set up development environment
+   - Clone and study example implementations
+
+2. **Deep Dive Research**
+   - Study all provided repositories
+   - Understand benchmarking system
+   - Analyze successful patterns from inspiration sources
+
+### Phase 2: Agent Development (Day 1 Afternoon - Day 2)
+1. **Base Agent Creation**
+   - Start with custom.py or hackable.py
+   - Implement basic web task capabilities
+   - Set up initial benchmarking
+
+2. **Enhancement Implementation**
+   - **Memory:** Implement context retention across tasks
+   - **Self-Critique:** Add self-evaluation and correction
+   - **Planning:** Implement task decomposition and planning
+   - **Retries:** Add robust error handling and retry logic
+
+### Phase 3: Optimization & Testing (Day 2 - Day 3 Morning)
+1. **Performance Tuning**
+   - Optimize for benchmark tasks
+   - Implement learnings from browser-use and nova-act
+   - Fine-tune parameters
+
+2. **Comprehensive Testing**
+   - Run full 112-task benchmark
+   - Analyze failure cases
+   - Implement targeted improvements
+
+### Phase 4: Documentation & Submission (Day 3)
+1. **Documentation**
+   - Create comprehensive README
+   - Document design decisions
+   - Outline future improvements
+
+2. **Submission**
+   - Create private repository
+   - Submit to leaderboard
+   - Prepare video demo (optional)
+
+## 🔧 Agent Enhancement Ideas
+
+### Memory System
+- **Short-term:** Task context and recent actions
+- **Long-term:** Successful patterns and common failures
+- **Implementation:** Vector database or structured storage
+
+### Self-Critique Mechanism
+- **Action Validation:** Check if actions achieve intended results
+- **Error Detection:** Identify when tasks go off-track
+- **Course Correction:** Implement recovery strategies
+
+### Planning System
+- **Task Decomposition:** Break complex tasks into steps
+- **Goal Setting:** Define clear objectives for each step
+- **Progress Tracking:** Monitor advancement toward goals
+
+### Retry Logic
+- **Failure Classification:** Categorize different types of failures
+- **Adaptive Strategies:** Different retry approaches for different failures
+- **Backoff Mechanisms:** Prevent infinite loops and resource exhaustion
+
+## 📊 Deliverables Checklist
+
+### 1. Custom Agent ✅
+- [ ] Working agent integrated with AGI SDK
+- [ ] Capable of solving web tasks
+- [ ] Enhanced with memory, self-critique, planning, and retries
+
+### 2. Benchmarking Results ✅
+- [ ] Results across 112 tasks (or subset)
+- [ ] Public submission to leaderboard
+- [ ] Minimum 30% accuracy achieved
+
+### 3. Writeup ✅
+- [ ] Document all changes made
+- [ ] Explain reasoning behind design choices
+- [ ] Outline potential future improvements
+
+### 4. Code ✅
+- [ ] Clean, modular, well-documented code
+- [ ] Comprehensive README with setup and usage
+- [ ] Private repository with proper access
+
+### 5. Video Demo (Optional) ✅
+- [ ] Demonstrate agent completing a task
+- [ ] Show key features and capabilities
+
+## 🎯 Next Steps
+
+1. **Start Project Tracking:** Email build@theagi.company when beginning
+2. **Begin Research Phase:** Deep dive into all provided repositories
+3. **Set Up Development Environment:** Install SDK and dependencies
+4. **Create Initial Agent:** Start with provided examples
+5. **Implement Enhancements:** Add memory, planning, self-critique, retries
+6. **Optimize Performance:** Target >30% (ideally >50%) accuracy
+7. **Document Everything:** Comprehensive writeup and README
+8. **Submit to Leaderboard:** Create model, run, and submit results
+
+## 🏆 Success Factors
+
+- **Thorough Research:** Understanding existing patterns and best practices
+- **Incremental Development:** Build and test iteratively
+- **Performance Focus:** Optimize specifically for benchmark tasks
+- **Robust Error Handling:** Implement comprehensive retry and recovery
+- **Clear Documentation:** Make code and decisions easy to understand
+- **Strategic Enhancements:** Focus on features that improve benchmark performance
+
+---
+
+*This plan provides a comprehensive roadmap for successfully completing the AGI Inc. interview project within the 3-day timeline while maximizing chances of achieving bonus targets.*

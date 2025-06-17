@@ -1,0 +1,41 @@
+RESEARCH PAPER SUMMARY & KEY LEARNINGS
+
+This document summarizes key learnings from relevant research papers and concepts for the AGI Interview Project.
+
+**Initial Research (Divyansh Garg & Stanford):**
+
+1.  **Divyansh Garg's Work (MultiOn, IQ-Learn, Extreme Q-Learning, Transformers):**
+    *   **Key Learning:** Emphasizes building personal AI agents and leveraging advanced reinforcement learning (RL) techniques. This highlights the importance of developing an agent capable of complex interactions and learning from its environment, potentially using advanced RL algorithms for optimization and decision-making. Transformer architectures are also key for understanding and generating human-like text and reasoning.
+
+2.  **Survey on WebAgents:**
+    *   **Key Learning:** Provides a comprehensive overview of existing web agents, their architectures, and common challenges. This is crucial for understanding the current landscape, identifying best practices, and informing the design of a robust and effective web agent for this project.
+
+3.  **Stanford and Google's Generative Agents:**
+    *   **Key Learning:** Showcases an architecture where agents can remember, retrieve, reflect, interact, and plan. This underscores the necessity of sophisticated memory systems (both short-term and long-term), self-reflection capabilities for learning and error correction, and advanced planning modules for tackling complex, multi-step tasks.
+
+4.  **Stanford HAI's NNetNav:**
+    *   **Key Learning:** Presents an open-source AI agent that learns to perform web tasks through direct interaction. This offers practical insights into training strategies for web agents and demonstrates the value of learning from real-world interactions to improve performance and adaptability.
+
+**Further Research (Agent Architectures - Memory, Planning, Reflection):**
+
+5.  **LLM Agents - General Concepts (Prompt Engineering Guide, Lil'Log):** <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference>
+    *   **Key Learning:** LLMs can serve as the core controller (brain) of an agent, augmented by modules for planning, memory, and tool use. <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference>
+    *   **Planning:** Involves breaking down complex tasks into sub-goals. <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference> Techniques like Chain of Thought (CoT) and Tree of Thoughts can be used. <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference> Planning can also involve feedback loops for iterative refinement based on past actions and observations (e.g., ReAct, Reflexion). <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference>
+    *   **Memory:** Crucial for agents to maintain state, recall past behaviors, and learn. <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference> Can include short-term (in-context) and long-term memory (e.g., vector stores, databases, knowledge graphs). <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference>
+    *   **Reflection (Self-Correction):** Enables agents to review past actions, identify mistakes, and refine plans for future actions. <mcreference link="https://medium.com/@akankshasinha247/architecting-intelligence-planning-reflection-memory-agent-architectures-814977e81e26" index="2">2</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference> Frameworks like ReAct and Reflexion incorporate this. <mcreference link="https://www.promptingguide.ai/research/llm-agents" index="1">1</mcreference> <mcreference link="https://lilianweng.github.io/posts/2023-06-23-agent/" index="5">5</mcreference>
+
+6.  **Agent Architectures (Medium Article, ArXiv Paper):** <mcreference link="https://medium.com/@akankshasinha247/architecting-intelligence-planning-reflection-memory-agent-architectures-814977e81e26" index="2">2</mcreference> <mcreference link="https://arxiv.org/html/2503.12687v1" index="4">4</mcreference>
+    *   **Key Learning:** Real-world agents require robust architectures that integrate planning, reflection, and memory to handle complex, long-horizon, contextual, and adaptive tasks. <mcreference link="https://medium.com/@akankshasinha247/architecting-intelligence-planning-reflection-memory-agent-architectures-814977e81e26" index="2">2</mcreference> The evolution is towards 'Agentic AI' – systems of multiple, collaborating agents. <mcreference link="https://medium.com/@akankshasinha247/architecting-intelligence-planning-reflection-memory-agent-architectures-814977e81e26" index="2">2</mcreference> Standardized evaluation and benchmarks are crucial for progress. <mcreference link="https://arxiv.org/html/2503.12687v1" index="4">4</mcreference>
+
+7.  **LLM Agents Papers Repository (GitHub):** <mcreference link="https://github.com/AGI-Edgerunners/LLM-Agents-Papers" index="3">3</mcreference>
+    *   **Key Learning:** Provides a vast collection of recent papers on LLM-based agents, covering enhancements in planning, memory, feedback/reflection, RAG, tool usage, and various applications. This is a valuable resource for finding state-of-the-art techniques and specific implementations related to the project's key areas.
+
+**Overall Learnings for the Project:**
+
+*   **Modular Architecture:** Design the agent with distinct modules for planning (task decomposition, goal setting), memory (short-term context, long-term knowledge/experience), self-critique/reflection (error analysis, plan refinement), and retry logic (robust error handling).
+*   **Advanced Planning:** Implement sophisticated planning mechanisms that can break down the main goal (achieving 90-100% accuracy on web tasks) into manageable sub-goals and adapt the plan based on execution feedback.
+*   **Sophisticated Memory:** Utilize a hybrid memory system. Short-term memory for immediate context and task steps, and long-term memory (e.g., vector database) to store learnings from past interactions, successful strategies, and common pitfalls.
+*   **Iterative Refinement through Reflection:** Incorporate a self-critique or reflection loop where the agent analyzes its actions, identifies errors or inefficiencies, and updates its strategy or plan. This is key to improving accuracy over time.
+*   **Robust Retry Mechanisms:** Develop intelligent retry logic that doesn't just repeat failed actions but attempts alternative approaches based on the nature of the error and past experiences.
+*   **Leverage Existing Frameworks/Research:** Actively consult resources like the LLM Agents Papers repository <mcreference link="https://github.com/AGI-Edgerunners/LLM-Agents-Papers" index="3">3</mcreference> and frameworks (e.g., LangChain, AutoGen if applicable) to implement these components effectively.
+*   **Data-Driven Optimization:** Continuously evaluate the agent's performance and use the data to fine-tune its components, especially the memory retrieval, planning heuristics, and reflection rules.

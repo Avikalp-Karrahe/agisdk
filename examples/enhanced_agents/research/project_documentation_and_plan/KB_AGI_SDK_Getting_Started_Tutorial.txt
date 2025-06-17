@@ -1,0 +1,51 @@
+AGI SDK Getting Started Guide
+
+This document summarizes the installation and quick-start process for the AGI SDK, based on its GitHub README. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+**Installation (30 seconds):** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+1.  **Install the SDK:** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+    ```bash
+    pip install agisdk
+    ```
+2.  **Install Playwright browser dependencies:** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+    ```bash
+    playwright install --force
+    ```
+    *   Note for Apple Silicon users: Run `brew install --cask playwright` first. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+3.  **Set your LLM API key (for evaluation):** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+    ```bash
+    export OPENAI_API_KEY="your-api-key" 
+    ```
+    *   The SDK supports OpenAI, Anthropic, OpenRouter, and custom models. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+**60-second Quick-Start:** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+Here's a minimal example for benchmarking an AI agent on the REAL Bench environment: <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+```python
+from agisdk import REAL
+
+harness = REAL.harness(
+    model="gpt-4o",       # any LLM tag
+    task_type="omnizon",  # Amazon-like store
+    headless=False        # watch it click in real-time!
+)
+
+print(harness.run())      # 🎉
+```
+
+**Local Development (Optional):** <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+If you want to develop locally, you can install from source: <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+```bash
+# Clone the repository
+git clone https://github.com/agi-inc/agisdk.git
+cd agisdk
+
+# Install in development mode
+pip install -e .
+```
+
+For more control and advanced examples, refer to the `example` folder in the repository. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>

@@ -1,0 +1,37 @@
+This file summarizes the `browser-use/browser-use` GitHub repository (https://github.com/browser-use/browser-use).
+
+**Browser-Use Overview:**
+- `browser-use` aims to be the easiest way to connect AI agents with a web browser, enabling them to automate tasks online <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- It allows AI agents to control the browser to perform actions based on given tasks <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Quick Start & Installation:**
+- Installation is done via pip: `pip install browser-use` (requires Python >= 3.11) <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- For memory functionality, an optional install is available: `pip install "browser-use[memory]"` (requires Python < 3.13 due to PyTorch compatibility) <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- Browser dependencies (Chromium) are installed using Playwright: `playwright install chromium --with-deps --no-shell` <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- API keys for various LLM providers (OpenAI, Anthropic, Azure, Google, DeepSeek, Grok, Novita) need to be set in a `.env` file <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- A quick start example shows how to initialize an `Agent` with a task and an LLM (e.g., `ChatOpenAI`) and run it <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Testing & UI:**
+- `browser-use` can be tested using its Web UI or a Desktop App <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>. The Web UI is a separate project (`browser-use/web-ui`) built on Gradio <mcreference link="https://github.com/browser-use/web-ui" index="2">2</mcreference>.
+- An interactive CLI is also available: `pip install browser-use[cli]`, then run `browser-use` <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Features & Roadmap:**
+- **Agent Capabilities:** The roadmap includes improving agent memory, enhancing planning, and reducing token consumption <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- **DOM Extraction:** Aims to enable detection of all UI elements and improve their state representation for LLMs <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- **Workflows:** Plans to allow users to record workflows and rerun them, even if pages change <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- **User Experience:** Focus on creating templates for common tasks (tutorials, job applications, QA testing), improving documentation, and increasing speed <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- **Parallelization:** A key future goal is to enable parallel execution of similar tasks for efficiency <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Community & Contribution:**
+- The project encourages community involvement through Discord and GitHub issues/pull requests <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+- They offer a way to automatically validate tasks in their CI by adding YAML files in `tests/agent_tasks/` <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Hosted Version & Swag:**
+- A hosted version is available at `cloud.browser-use.com` <mcreference link="https://github.com/browser-use" index="3">3</mcreference>.
+- Merchandise is available, and good contributors may receive swag for free <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference>.
+
+**Related Projects:**
+- `browser-use/web-ui`: A Gradio-based web interface for `browser-use` <mcreference link="https://github.com/browser-use/web-ui" index="2">2</mcreference>.
+- `Saik0s/mcp-browser-use`: An MCP (Model Context Protocol) server and CLI built upon `browser-use/web-ui`, enabling natural language browser control and web research with various LLMs <mcreference link="https://github.com/Saik0s/mcp-browser-use" index="4">4</mcreference>.
+
+This summary is based on the information available on the `browser-use/browser-use` GitHub repository and related project pages <mcreference link="https://github.com/browser-use/browser-use" index="1">1</mcreference> <mcreference link="https://github.com/browser-use/web-ui" index="2">2</mcreference> <mcreference link="https://github.com/browser-use" index="3">3</mcreference> <mcreference link="https://github.com/Saik0s/mcp-browser-use" index="4">4</mcreference>.

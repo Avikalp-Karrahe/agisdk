@@ -1,0 +1,54 @@
+# Understanding of the AGI Interview PDF
+
+This document summarizes the key aspects of the AGI Interview Take-Home Assignment as understood from the provided PDF.
+
+## 1. Primary Goal
+
+The main objective is to create a custom Agent using the AGI SDK and benchmark its performance on a series of web tasks.
+
+## 2. Core Requirements
+
+*   **Develop a Custom Agent:** The agent must be capable of performing web tasks.
+*   **Utilize AGI SDK:** Set up and use the AGI SDK for benchmarking.
+*   **Benchmark Tasks:** The agent needs to be benchmarked on 112 tasks.
+*   **Minimum Performance:** Achieve a minimum benchmark score of 30%.
+*   **Submission:** Create a private repository for the code and provide access upon submission.
+
+## 3. Suggested Agent Enhancements
+
+The project suggests considering the following areas for agent performance improvement:
+
+*   **Memory:** Implementing mechanisms for the agent to remember information.
+*   **Self-Critique:** Enabling the agent to evaluate its own actions and learn from mistakes.
+*   **Planning:** Allowing the agent to create and follow multi-step plans.
+*   **Retries:** Implementing robust error handling and retry logic.
+
+## 4. Inspiration & Resources
+
+*   **Inspiration:** Explore the `Browser-use` and `Nova-act` GitHub repositories.
+*   **Guidance:** Refer to the AGI SDK documentation for comprehensive details.
+*   **Starting Points:** The `custom.py` or `hackable.py` examples in the SDK are recommended starting points.
+
+## 5. Deliverables
+
+The project requires the following deliverables:
+
+1.  **Custom Agent:** A working agent integrated with the AGI SDK that can solve web tasks.
+2.  **Benchmarking Results:** Results from benchmarking across the 112 tasks (or a selected subset), including a public submission to the Leaderboard.
+3.  **Writeup:** A document detailing the changes made to the agent, the reasoning behind these choices, and potential future improvements.
+4.  **Code:** Clean, modular, and well-documented code, including a README file with setup and usage instructions. Access to the private repository containing the code must be provided.
+5.  **Video Demo (Optional):** A video demonstrating the agent successfully completing a task is encouraged.
+
+## 6. Getting Started & Submission Logistics
+
+*   **SDK Installation:** Install the AGI SDK.
+*   **Leaderboard:** Create a Model and a Run via `https://www.realevals.xyz/` to get a `RunID` for leaderboard submission. Add `leaderboard=True` and the `run_id` to the harness.
+
+## 7. Bonus Opportunity
+
+Achieving a rank in the top 3 on any leaderboard or securing >50% accuracy on the leaderboard can fast-track the candidate in the interview process.
+
+## 8. Timeline
+
+*   The project must be completed within 3 days from the official start date.
+*   To mark the start, an email should be sent to `build@theagi.company`.

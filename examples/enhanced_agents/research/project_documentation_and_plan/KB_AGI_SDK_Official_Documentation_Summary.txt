@@ -1,0 +1,57 @@
+This file summarizes the documentation for the AGI SDK, primarily sourced from its main GitHub repository page (https://github.com/agi-inc/agisdk).
+
+**AGI SDK Overview:**
+- The AGI SDK is a toolkit designed for building and evaluating AI browser agents in real-world web environments <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- It powers REAL Bench, a benchmark for AI agents on modern websites like Amazon, DoorDash, and Airbnb <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Key goals include enabling users to train agents for web interaction, benchmark them with standardized tasks, and submit results to a leaderboard <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+
+**Quick Start & Installation:**
+- Installation involves `pip install agisdk` and `playwright install --force` for browser dependencies <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- An LLM API key (e.g., OpenAI, Anthropic, OpenRouter) needs to be set as an environment variable (e.g., `OPENAI_API_KEY`) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- A minimal example demonstrates running an agent on a REAL Bench task (e.g., 'omnizon' for an Amazon-like store) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+
+**Features:**
+- Provides full-stack web replicas of popular real-world applications <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Offers a robust agent API including observations, actions, memory, and error handling <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Integrates with the REAL Bench leaderboard <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Features a customizable harness for plugging in custom agents <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Supports multiple LLM providers and custom models <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- Allows for parallel evaluation <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+
+**Running Custom Agents:**
+- The `example` folder in the repository contains examples like `starter.py`, `custom.py`, and `nova.py` (for agents with existing browser instances like Amazon NovaAct) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+- `hackable.py` provides a configurable example for better performance <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+
+**Available Tasks (Web Clones):**
+- Omnizon (Amazon-like)
+- DashDish (DoorDash-like)
+- FlyUnified (United-like)
+- Staynb (Airbnb-like)
+- GoCalendar (Google Calendar-like)
+- GoMail (Gmail-like)
+- OpenDining (OpenTable-like)
+- NetworkIn (LinkedIn-like)
+- Udriver (Uber-like)
+- TopWork (UpWork-like)
+- Zilloft (Zillow-like) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+**Observation Structure for Agents:**
+- Agents receive a rich observation object containing:
+    - `chat_messages`
+    - `goal` (text and structured object)
+    - `open_pages_urls`
+    - `active_page_index`
+    - `url`
+    - `screenshot` (numpy array)
+    - `dom_object`
+    - `axtree_object` (Accessibility tree)
+    - `extra_element_properties`
+    - `focused_element_bid`
+    - `last_action` and `last_action_error`
+    - `elapsed_time`
+    - `browser` (Playwright browser object for direct control) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
+
+**Local Development:**
+- For local development, the repository can be cloned and installed in development mode (`pip install -e .`) <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.
+
+This summary is based on the information available on the main page of the AGI SDK GitHub repository <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>.

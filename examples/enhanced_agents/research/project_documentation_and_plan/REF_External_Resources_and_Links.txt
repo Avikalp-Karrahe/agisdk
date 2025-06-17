@@ -1,0 +1,9 @@
+Links found in the PDF:
+
+1. https://github.com/agi-inc/agisdk
+2. https://github.com/aws/nova-act
+3. https://github.com/agi-inc/agisdk/tree/main/docs
+4. https://github.com/browser-use/browser-use
+5. https://github.com/agi-inc/agisdk/blob/main/example/custom.py
+6. https://github.com/agi-inc/agisdk/blob/main/example/hackable.py
+7. https://www.realevals.xyz/

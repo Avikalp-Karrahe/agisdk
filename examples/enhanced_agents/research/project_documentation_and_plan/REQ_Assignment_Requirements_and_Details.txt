@@ -1,0 +1,54 @@
+
+--- PAGE 1 ---
+AGI Inc. Interview Project
+Goal:
+Create a custom Agent and run it using the agi sdk to benchmark its performance on web
+tasks.
+Requirements:
+● Develop a custom agent capable of performing web tasks
+● Utilize the AGI SDK to set up benchmarks (estimate to take ~20 minutes)
+● Benchmark your agent using the provided websites and complete a total of 112 tasks
+● Achieve a minimum benchmark score of 30%
+● Create a Private repository and give access while submitting
+Agents Enhancement Ideas:
+Consider enhancing agent performance with:
+● Memory
+● Self-Critique
+● Planning
+● Retries
+For inspiration, explore:
+● Browser-use GitHub Repo
+● Nova-act GitHub Repo
+Refer to the AGI SDK documentation for comprehensive guidance.
+Deliverables:
+--- PAGE 2 ---
+1. Custom Agent:
+○ Working agent integrated with agi sdk that solves web tasks
+2. Benchmarking Results:
+○ Benchmark results across 112 tasks or a selected subset
+○ Public submission to the Leaderboard
+3. Writeup:
+○ Document changes made and explain your reasoning behind these choices
+○ Outline potential future improvements for the agent
+4. Code:
+○ Clean, modular, and well-documented code
+○ Include README with setup and usage
+○ Send access to the private repo where the code is kept
+5. Video demo (Optional but encouraged):
+○ Demonstrate your agent successfully completing a task
+Guide to getting started:
+● Install the SDK: AGI SDK Installation
+● Review detailed setup and implementation guides in the documentation.
+● Custom or hackable are good starting points to start creating.
+● Leaderboard Submission Steps:
+○ Create a Model, and then create a Run from the https://www.realevals.xyz/
+○ Retrieve the RunID
+○ Add leaderboard=True and run_id="my_unique_id” into the harness.
+● Improve the agent!
+Bonus:
+Rank top 3 amongst all leaderboards or >50% accuracy on the leaderboard (relatively simple),
+and we would fast track you above other candidates in the interview process 🔥
+--- PAGE 3 ---
+Timeline:
+● Complete the project within 3 days of your start date.
+● Begin tracking by emailing build@theagi.company when you start the project.

@@ -1,0 +1,10 @@
+AGI SDK Examples Summary
+
+The AGI SDK GitHub repository (https://github.com/agi-inc/agisdk) contains an 'example' folder with the following example agent implementations:
+
+- `example/starter.py`: A simple example to get started with the SDK.
+- `example/custom.py`: A more complex example demonstrating a custom agent.
+- `example/nova.py`: An example for running custom agents that already have browsers running (specifically mentions Amazon NovaAct).
+- `example/hackable.py`: An example that can be configured for better performance and as a starting point for custom development.
+
+This information is based on the README of the agi-inc/agisdk repository. <mcreference link="https://github.com/agi-inc/agisdk" index="1">1</mcreference>
