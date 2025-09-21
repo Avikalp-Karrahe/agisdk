@@ -1,0 +1,27 @@
+# Voice Nova Agent Requirements
+# Core dependencies for voice-controlled Nova Act agent
+
+# Web framework
+flask==2.3.3
+flask-cors==4.0.0
+
+# Nova Act (already installed)
+nova-act
+
+# Async support
+asyncio
+
+# HTTP requests
+requests==2.31.0
+
+# Optional: Enhanced voice processing
+# speechrecognition==3.10.0  # For local speech recognition
+# pyttsx3==2.90  # For text-to-speech feedback
+# pyaudio==0.2.11  # For microphone input
+
+# Development and testing
+pytest==7.4.2
+pytest-asyncio==0.21.1
+
+# Logging and utilities
+python-dotenv==1.0.0  # For environment variable management

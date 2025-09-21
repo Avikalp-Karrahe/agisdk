@@ -1,0 +1,34 @@
+{
+  "episodes": [
+    {
+      "state_hash": "a483f4b6d9ef3e3b",
+      "action": "click(submit_button)",
+      "outcome": "success",
+      "success": true,
+      "domain": "webclones.omnizon",
+      "execution_time": 1.5,
+      "confidence": 0.8,
+      "timestamp": 1758017134.155801
+    }
+  ],
+  "success_patterns": {
+    "a483f4b6d9ef3e3b_click(submit_button)": 1
+  },
+  "failure_patterns": {
+    "a483f4b6d9ef3e3b_click(submit_button)": 0
+  },
+  "domain_strategies": {
+    "webclones.omnizon": {
+      "click(submit_button)": 1
+    }
+  },
+  "state_action_outcomes": {
+    "a483f4b6d9ef3e3b_click(submit_button)": {
+      "success_rate": 1.0,
+      "avg_time": 1.5,
+      "last_outcome": "success",
+      "confidence": 0.8
+    }
+  },
+  "saved_at": 1758017134.155853
+}

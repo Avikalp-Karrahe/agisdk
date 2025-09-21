@@ -1,0 +1,92 @@
+{
+  "current_plan": [
+    {
+      "id": "ecommerce_purchase_0_1758020312",
+      "description": "search_product",
+      "priority": 1,
+      "estimated_steps": 2,
+      "dependencies": [],
+      "status": "pending",
+      "actual_steps": 0,
+      "start_time": null,
+      "end_time": null,
+      "confidence": 0.5,
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "ecommerce_purchase_1_1758020312",
+      "description": "select_product",
+      "priority": 2,
+      "estimated_steps": 1,
+      "dependencies": [
+        "search_product"
+      ],
+      "status": "pending",
+      "actual_steps": 0,
+      "start_time": null,
+      "end_time": null,
+      "confidence": 0.5,
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "ecommerce_purchase_2_1758020312",
+      "description": "add_to_cart",
+      "priority": 3,
+      "estimated_steps": 1,
+      "dependencies": [
+        "select_product"
+      ],
+      "status": "pending",
+      "actual_steps": 0,
+      "start_time": null,
+      "end_time": null,
+      "confidence": 0.5,
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "ecommerce_purchase_3_1758020312",
+      "description": "proceed_to_checkout",
+      "priority": 4,
+      "estimated_steps": 2,
+      "dependencies": [
+        "add_to_cart"
+      ],
+      "status": "pending",
+      "actual_steps": 0,
+      "start_time": null,
+      "end_time": null,
+      "confidence": 0.5,
+      "retry_count": 0,
+      "max_retries": 3
+    },
+    {
+      "id": "ecommerce_purchase_4_1758020312",
+      "description": "complete_purchase",
+      "priority": 5,
+      "estimated_steps": 3,
+      "dependencies": [
+        "proceed_to_checkout"
+      ],
+      "status": "pending",
+      "actual_steps": 0,
+      "start_time": null,
+      "end_time": null,
+      "confidence": 0.5,
+      "retry_count": 0,
+      "max_retries": 3
+    }
+  ],
+  "execution_history": [],
+  "plan_metrics": {
+    "total_plans_created": 3,
+    "successful_plans": 0,
+    "failed_plans": 0,
+    "replanning_events": 0,
+    "average_plan_completion_time": 0.0,
+    "most_successful_goal_types": {},
+    "common_failure_patterns": {}
+  }
+}

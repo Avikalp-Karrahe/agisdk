@@ -1,0 +1,110 @@
+{
+  "functions": [
+    {
+      "name": "execute_nova_command",
+      "description": "Execute web automation commands through Nova Act for browser control",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "command": {
+            "type": "string",
+            "description": "The voice command to execute (e.g., 'go to amazon', 'search for laptops', 'click first result')"
+          }
+        },
+        "required": ["command"]
+      }
+    },
+    {
+      "name": "adjust_rl_parameters",
+      "description": "Modify reinforcement learning agent training parameters",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "enum": ["exploration_rate", "learning_rate", "safety_weight", "reward_decay"],
+            "description": "The RL parameter to adjust"
+          },
+          "value": {
+            "type": "number",
+            "minimum": 0.0,
+            "maximum": 1.0,
+            "description": "The new value for the parameter (0.0 to 1.0)"
+          }
+        },
+        "required": ["parameter", "value"]
+      }
+    },
+    {
+      "name": "get_agent_status",
+      "description": "Retrieve current RL agent performance metrics and training status",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "get_agi_metrics",
+      "description": "Get advanced AGI monitoring data including neural complexity and cognitive metrics",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "reset_training",
+      "description": "Reset the RL agent training session (use with caution)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "confirm": {
+            "type": "boolean",
+            "description": "Confirmation that user wants to reset training progress"
+          }
+        },
+        "required": ["confirm"]
+      }
+    },
+    {
+      "name": "take_screenshot",
+      "description": "Capture a screenshot of the current browser state",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "quick_action",
+      "description": "Execute predefined quick actions for RL training optimization",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "enum": ["increase_exploration", "enhance_safety", "speed_up_learning", "reset_parameters"],
+            "description": "The quick action to perform"
+          }
+        },
+        "required": ["action"]
+      }
+    },
+    {
+      "name": "run_demo",
+      "description": "Execute a specific demo (price comparison, smart forms, news intelligence, adaptive workflows, or laptop shopping)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "demo_type": {
+            "type": "string",
+            "enum": ["price_comparison", "smart_forms", "news_intelligence", "adaptive_workflows", "laptop_shopping"],
+            "description": "The type of demo to execute"
+          }
+        },
+        "required": ["demo_type"]
+      }
+    }
+  ]
+}

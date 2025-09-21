@@ -139,12 +139,16 @@ class Config010EnhancedAgent(Agent):
         }
         
         # Initialize action set (matching DemoAgent configuration)
-        self.action_set = HighLevelActionSet(
-            subsets=["chat", "bid", "infeas"],  # Added 'infeas' subset
-            strict=False,
-            multiaction=False,  # Changed to False like DemoAgent
-            demo_mode="off"
-        )
+        try:
+            self.action_set = HighLevelActionSet(
+                subsets=["chat", "bid", "infeas"],  # Added 'infeas' subset
+                strict=False,
+                multiaction=False,  # Changed to False like DemoAgent
+                demo_mode="off"
+            )
+        except TypeError:
+            # Fallback for when HighLevelActionSet doesn't accept arguments
+            self.action_set = HighLevelActionSet()
         
         # Initialize OpenAI client for LLM-based action generation
         try:
@@ -865,15 +869,16 @@ class Config010EnhancedAgentArgs(AbstractAgentArgs):
 
 if __name__ == "__main__":
     # Test initialization
-    config = Config010EnhancedAgentArgs(
-        enhanced_selection=True,
-        timeout_ms=5000,
-        retry_attempts=3,
-        simulate_execution=True
-    )
-    agent = Config010EnhancedAgent(config)
+    config_dict = {
+        "enhanced_selection": True,
+        "timeout_ms": 5000,
+        "retry_attempts": 3,
+        "simulate_execution": True
+    }
+    config = Config010EnhancedAgentArgs(config=config_dict)
+    agent = config.make_agent()
     print("Config 010 Enhanced Agent initialized successfully!")
-    print(f"Configuration: {config}")
+    print(f"Configuration: {config_dict}")
     print(f"Stats: {agent.get_stats()}")
 
 
