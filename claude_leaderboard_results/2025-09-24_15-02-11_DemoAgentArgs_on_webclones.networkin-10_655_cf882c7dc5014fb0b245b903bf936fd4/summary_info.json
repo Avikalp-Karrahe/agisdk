@@ -1,0 +1,64 @@
+{
+    "task_name": "webclones.networkin-10",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.networkin-10_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 1,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.networkin-10_655",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "contactListDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "profilesDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "searchHistoryDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "connectionRequestsDiff": {
+                "removed": []
+            },
+            "feedPostsDiff": {
+                "added": [],
+                "removed": [],
+                "modified": []
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 2,
+    "stats.cum_n_token_last_action": 0,
+    "stats.max_n_token_last_action": 0,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_axtree_txt": 3697,
+    "stats.max_n_token_axtree_txt": 3697,
+    "stats.cum_n_token_pruned_html": 55498,
+    "stats.max_n_token_pruned_html": 55498,
+    "stats.cum_step_elapsed": 4.034692287445068,
+    "stats.max_step_elapsed": 4.034692287445068,
+    "stats.cum_agent_elapsed": 5.275450944900513,
+    "stats.max_agent_elapsed": 5.275450944900513,
+    "terminated": true,
+    "truncated": false
+}

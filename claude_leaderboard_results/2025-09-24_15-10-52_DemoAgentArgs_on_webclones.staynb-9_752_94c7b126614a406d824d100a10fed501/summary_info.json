@@ -1,0 +1,64 @@
+{
+    "task_name": "webclones.staynb-9",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.staynb-9_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 13,
+    "cum_reward": 0.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": false,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.staynb-9_752",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "bookingDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "recentSearchesDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "config": {
+                "staynb": {
+                    "price_multiplier": 1,
+                    "latency": 0,
+                    "no_vacancy": false,
+                    "service_unavailable": false,
+                    "hide_aria_labels": false,
+                    "error_making_reservation": false,
+                    "run_id": "f1a58d7a-d697-414c-8d04-7431894011d6",
+                    "task_id": "staynb-9",
+                    "removePopup": false
+                }
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 14,
+    "stats.cum_n_token_last_action": 2628,
+    "stats.max_n_token_last_action": 289,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_axtree_txt": 297889,
+    "stats.max_n_token_axtree_txt": 30898,
+    "stats.cum_n_token_pruned_html": 1491663,
+    "stats.max_n_token_pruned_html": 152268,
+    "stats.cum_step_elapsed": 56.94409656524658,
+    "stats.max_step_elapsed": 6.023022890090942,
+    "stats.cum_agent_elapsed": 141.19494199752808,
+    "stats.max_agent_elapsed": 27.061332941055298,
+    "terminated": true,
+    "truncated": false
+}

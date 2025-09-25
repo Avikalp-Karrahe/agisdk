@@ -1,0 +1,89 @@
+2025-09-24 15:09:55,879 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.dashdish-6_932 in:
+  claude_leaderboard_results/2025-09-24_15-09-55_DemoAgentArgs_on_webclones.dashdish-6_932_8d8b29715fd44046a9bb9c30b91fb9f3
+2025-09-24 15:09:55,890 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 15:09:55,890 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 15:10:10,478 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:10:10,481 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:10:10,856 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) The goal is to find the price of a regular "Chicken Biryani" from "Mashaallah Halal Food Pakistani Food"
+
+2) Looking at the current page content, I can see the restaurant "Mashaallah Halal Food Pakistani Food" is listed as one of the restaurants, with a 4.0 rating and 1.0 mi distance
+
+3) To see the menu and prices, I need to click on this restaurant first
+
+4) Looking through the accessibility tree, I can see the element for this restaurant has bid "649" for its image
+
+5) Clicking on the restaurant's image or card should take me to its menu page where I can find the price
+
+Therefore, I will click on the restaurant to navigate to its menu:
+
+```click("649")```
+
+This should take us to the restaurant's menu page where we can search for the Chicken Biryani dish and its price.
+
+2025-09-24 15:10:21,302 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:10:21,305 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:10:21,323 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) Looking at the current page content, I can actually see the Chicken Biryani price already listed under "Most Liked Items From The Menu"
+
+2) From the accessibility tree, I can see:
+```
+[358] heading 'Chicken Biryani'
+[360] paragraph ''
+    StaticText '$'
+    StaticText '17.11'
+```
+
+3) I found the exact price for a regular Chicken Biryani - it's $17.11
+
+4) Since I found the information requested, I should report it to the user
+
+Therefore, I will send this information to the user:
+
+```send_msg_to_user("The regular Chicken Biryani from Mashaallah Halal Food Pakistani Food costs $17.11")```
+
+2025-09-24 15:10:23,047 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.dashdish-6.
+OpenAIError:
+The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 278, in run
+    step_info.from_step(env, action, obs_preprocessor=agent.obs_preprocessor)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 401, in from_step
+    self.obs, self.reward, self.terminated, self.truncated, env_info = env.step(action)
+                                                                       ~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+                                                       ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+           ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 578, in step
+    reward, done, user_message, task_info = self._task_validate()
+                                            ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 603, in _task_validate
+    reward, done, user_message, info = self.task.validate(self.page, self.chat.messages)
+                                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/base.py", line 196, in validate
+    reward, _, message, info = self.evaluator.evaluate(env_state_json, model_response)
+                               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 79, in evaluate
+    is_correct = self.evaluate_with_llm(model_response, eval.rubric)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 53, in evaluate_with_llm
+    llm_grade = generate_from_model(prompt=fuzzy_match_prompt, model=self.llm)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/utils.py", line 15, in generate_from_model
+    client = OpenAI()
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/openai/_client.py", line 135, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+2025-09-24 15:10:23,048 - agisdk.REAL.browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'pop'

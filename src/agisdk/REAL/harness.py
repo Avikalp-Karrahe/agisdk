@@ -56,7 +56,8 @@ if RAY_AVAILABLE:
         # Set up experiment
         exp_args = ExpArgs(
             env_args=env_args,
-            agent_args=agent_args
+            agent_args=agent_args,
+            save_step_info_pkl=True
         )
         
         # Start timing
@@ -706,7 +707,8 @@ class harness:
         # Set up experiment
         exp_args = ExpArgs(
             env_args=env_args,
-            agent_args=agent_args
+            agent_args=agent_args,
+            save_step_info_pkl=True
         )
         
         # Start timing

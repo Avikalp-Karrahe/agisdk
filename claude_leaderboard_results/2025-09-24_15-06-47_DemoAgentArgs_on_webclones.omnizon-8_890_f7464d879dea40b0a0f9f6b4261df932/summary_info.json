@@ -1,0 +1,77 @@
+{
+    "task_name": "webclones.omnizon-8",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.omnizon-8_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 9,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.omnizon-8_890",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "orderDetailsDiff": {
+                "added": {
+                    "0": {
+                        "order": {
+                            "cart": [
+                                {
+                                    "id": "51",
+                                    "name": "PHILIPS 4400 Series Fully Automatic Espresso Machine \u2013 12 Hot & Iced Coffees, Quick-to-Clean LatteGo Milk System, SilentBrew, QuickStart, Ceramic Grinder, Black Chrome (EP4444/90)",
+                                    "quantity": 5
+                                }
+                            ],
+                            "total": "4999.55",
+                            "selected_delivery": "Tomorrow, Jul 19",
+                            "selected_card": null,
+                            "config": {
+                                "omnizon": {
+                                    "latency": 0,
+                                    "hide_aria_labels": false,
+                                    "apply_discount": false,
+                                    "discount_percentage": 20,
+                                    "run_id": "f1a58d7a-d697-414c-8d04-7431894011d6",
+                                    "task_id": "omnizon-8",
+                                    "removePopup": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "deleted": {},
+                "updated": {}
+            },
+            "cartDetailsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 10,
+    "stats.cum_n_token_last_action": 1301,
+    "stats.max_n_token_last_action": 229,
+    "stats.cum_n_token_last_action_error": 150,
+    "stats.max_n_token_last_action_error": 150,
+    "stats.cum_n_token_axtree_txt": 28343,
+    "stats.max_n_token_axtree_txt": 5834,
+    "stats.cum_n_token_pruned_html": 197225,
+    "stats.max_n_token_pruned_html": 49128,
+    "stats.cum_step_elapsed": 45.22231078147888,
+    "stats.max_step_elapsed": 7.962410926818848,
+    "stats.cum_agent_elapsed": 40.70005416870117,
+    "stats.max_agent_elapsed": 5.849326133728027,
+    "terminated": true,
+    "truncated": false
+}

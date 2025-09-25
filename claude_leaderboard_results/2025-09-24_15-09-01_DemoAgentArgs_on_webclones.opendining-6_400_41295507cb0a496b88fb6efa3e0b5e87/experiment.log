@@ -1,0 +1,131 @@
+2025-09-24 15:09:01,080 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.opendining-6_400 in:
+  claude_leaderboard_results/2025-09-24_15-09-01_DemoAgentArgs_on_webclones.opendining-6_400_41295507cb0a496b88fb6efa3e0b5e87
+2025-09-24 15:09:01,091 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 15:09:01,091 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 15:09:12,294 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:12,297 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:12,352 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) My goal is to try making a booking with phone number "+1 1111" and report if it's successful
+
+2) Looking at the page, I see several restaurants I can choose from:
+- The Royal Dine (French)
+- Vintage Bites (American) 
+- Evening Delight (Italian)
+- River View Café
+- Fancy Lights Bistro
+
+3) I need to select any restaurant and proceed with a booking. The Royal Dine is the first option and has booking times available at 1:30 PM, 2:00 PM and 2:30 PM.
+
+4) I should click one of the available booking times to start the booking process. Let's select 1:30 PM.
+
+```click("196")```
+
+This will take me to the booking page where I can enter the phone number "+1 1111" and complete the test.
+
+2025-09-24 15:09:21,542 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:21,549 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:21,552 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I'm now on the booking details page for The Royal Dine at 1:30 PM for 2 people
+
+2) My goal is to test booking with phone number "+1 1111"
+
+3) Looking at the page, I see a phone number input field that already has "+1" filled in. I just need to enter "1111" into this field.
+
+4) In the accessibility tree, I can see this textbox is identified by bid "2389"
+
+5) I will fill the phone number field with "1111":
+
+```fill("2389", "1111")```
+
+After this, I can proceed to click the "Complete reservation" button to test if the booking works with this phone number.
+
+2025-09-24 15:09:33,680 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:33,683 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:33,687 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I've filled in the phone number with "1111", and now I need to complete the booking to see if it works
+
+2) Looking at the page, I see the "Complete reservation" button with bid "2413"
+
+3) All required fields appear to be filled:
+- Phone number (filled with +1 1111)
+- Email (pre-filled with user_name@gmail.com)
+- Optional fields (occasion and special request) can be left empty
+
+4) I should click the "Complete reservation" button to test if the booking works with this phone number:
+
+```click("2413")```
+
+This will attempt to submit the booking and I'll be able to see if it's successful or if there are any validation errors with the phone number.
+
+2025-09-24 15:09:38,479 - agisdk.REAL.browsergym.core.observation - WARNING - Failed to extract BrowserGym data from ARIA string: 'Enter a valid phone number'
+2025-09-24 15:09:43,571 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:43,577 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:43,587 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me analyze the current situation:
+
+1) Looking at my previous actions:
+- I clicked to select The Royal Dine at 1:30 PM
+- I filled in the phone number "+1 1111"
+- I clicked the "Complete reservation" button
+
+2) Looking at the current page state, I notice:
+- There's an error message saying "Enter a valid phone number"
+- The phone field shows "+1 111" (not the full number I tried to enter)
+- The booking was not successful due to phone number validation
+
+3) This test has revealed that:
+- The system won't accept "+1 1111" as a valid phone number
+- This validates that the phone number validation is working
+- The booking attempt failed as expected with an invalid phone number
+
+4) Since I've completed the test and can report the results, I should inform about the outcome:
+
+```send_msg_to_user("The booking attempt with phone number '+1 1111' failed. The system correctly rejected the invalid phone number with an error message 'Enter a valid phone number'.")```
+
+2025-09-24 15:09:45,256 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.opendining-6.
+OpenAIError:
+The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 278, in run
+    step_info.from_step(env, action, obs_preprocessor=agent.obs_preprocessor)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 401, in from_step
+    self.obs, self.reward, self.terminated, self.truncated, env_info = env.step(action)
+                                                                       ~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+                                                       ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+           ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 578, in step
+    reward, done, user_message, task_info = self._task_validate()
+                                            ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 603, in _task_validate
+    reward, done, user_message, info = self.task.validate(self.page, self.chat.messages)
+                                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/base.py", line 196, in validate
+    reward, _, message, info = self.evaluator.evaluate(env_state_json, model_response)
+                               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 79, in evaluate
+    is_correct = self.evaluate_with_llm(model_response, eval.rubric)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 53, in evaluate_with_llm
+    llm_grade = generate_from_model(prompt=fuzzy_match_prompt, model=self.llm)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/utils.py", line 15, in generate_from_model
+    client = OpenAI()
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/openai/_client.py", line 135, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+2025-09-24 15:09:45,256 - agisdk.REAL.browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'pop'

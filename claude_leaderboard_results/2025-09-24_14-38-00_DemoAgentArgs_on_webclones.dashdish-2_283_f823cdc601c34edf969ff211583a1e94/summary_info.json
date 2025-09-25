@@ -1,0 +1,110 @@
+{
+    "task_name": "webclones.dashdish-2",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.dashdish-2_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 11,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.dashdish-2_283",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "config": {
+                "hide_aria_labels": true,
+                "latency": 0,
+                "time_notification": 3000,
+                "estimated_tax": 0.67,
+                "run_id": "f1a58d7a-d697-414c-8d04-7431894011d6",
+                "task_id": "dashdish-2",
+                "removePopup": false
+            },
+            "differences": {
+                "foodOrders": {
+                    "added": {
+                        "0": {
+                            "orderId": "ORD-1758749963299-993",
+                            "checkoutDetails": {
+                                "account": {
+                                    "email": "shaun.t.vanweelden@gmail.com"
+                                },
+                                "shipping": {
+                                    "shippingOption": "Delivery",
+                                    "time": "45-60",
+                                    "address": "710 Portofino Ln, Foster City, CA 94404, USA",
+                                    "phone": "(415) 861-2802",
+                                    "isGift": true,
+                                    "deliveryOption": "Standard",
+                                    "dropOffOption": "Leave it at my door",
+                                    "dropOffInstructions": "Please ring the bell and drop off at the door, thank you. Its around the corner on the ground floor"
+                                },
+                                "payment": {
+                                    "id": "1",
+                                    "type": "Visa",
+                                    "cardNumber": "4444111122225097",
+                                    "last4": "5097",
+                                    "expiry": "06/2025",
+                                    "color": "#1a73e8",
+                                    "label": "VISA"
+                                },
+                                "charges": {
+                                    "tip": 2,
+                                    "deliveryFee": 2.99,
+                                    "serviceFee": 3,
+                                    "estimatedTax": 0.67,
+                                    "totalAmount": 28.74
+                                }
+                            },
+                            "cartItems": [
+                                {
+                                    "id": "1",
+                                    "photoUrl": "https://images.pexels.com/photos/1260968/pexels-photo-1260968.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+                                    "name": "Pepperoni Pizza",
+                                    "price": "19.18",
+                                    "likePercentage": "88%",
+                                    "likeCount": "(34)",
+                                    "restaurantName": "Papa Johns Pizza",
+                                    "size": "Medium",
+                                    "quantity": 1,
+                                    "basePrice": 19.18,
+                                    "extraCost": 0.9,
+                                    "finalPrice": "20.08",
+                                    "uniqueIdentifier": "1-Medium-0.9"
+                                }
+                            ],
+                            "createdAt": "2025-09-24T21:39:23.299Z"
+                        }
+                    },
+                    "deleted": {},
+                    "updated": {}
+                }
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 12,
+    "stats.cum_n_token_last_action": 2037,
+    "stats.max_n_token_last_action": 239,
+    "stats.cum_n_token_last_action_error": 12,
+    "stats.max_n_token_last_action_error": 12,
+    "stats.cum_n_token_axtree_txt": 70152,
+    "stats.max_n_token_axtree_txt": 26916,
+    "stats.cum_n_token_pruned_html": 2319130,
+    "stats.max_n_token_pruned_html": 1015952,
+    "stats.cum_step_elapsed": 44.86606574058533,
+    "stats.max_step_elapsed": 5.6617279052734375,
+    "stats.cum_agent_elapsed": 63.30976748466492,
+    "stats.max_agent_elapsed": 9.2897207736969,
+    "terminated": true,
+    "truncated": false
+}

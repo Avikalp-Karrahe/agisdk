@@ -1,0 +1,60 @@
+2025-09-24 14:38:00,483 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.dashdish-1_691 in:
+  claude_leaderboard_results/2025-09-24_14-38-00_DemoAgentArgs_on_webclones.dashdish-1_691_e12c779079ef41d197994333d10bb122
+2025-09-24 14:38:00,676 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 14:38:00,676 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 14:38:14,362 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:38:14,375 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:38:14,721 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me find the first three restaurants listed on the homepage.
+
+Looking at the page structure, I see there is a section "Under $1 delivery fee" that contains restaurant listings. The first three restaurants in that section are:
+
+1. Gambinos New York Subs - 4.3 rating
+2. Wingstop - 4.4 rating
+3. Man vs. Fries - 3.9 rating
+
+I'll send this information to the user:
+
+```send_msg_to_user("The first three restaurants listed on the homepage are: 1) Gambinos New York Subs, 2) Wingstop, and 3) Man vs. Fries.")```
+
+2025-09-24 14:38:16,404 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.dashdish-1.
+OpenAIError:
+The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 278, in run
+    step_info.from_step(env, action, obs_preprocessor=agent.obs_preprocessor)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 401, in from_step
+    self.obs, self.reward, self.terminated, self.truncated, env_info = env.step(action)
+                                                                       ~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+                                                       ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+           ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 578, in step
+    reward, done, user_message, task_info = self._task_validate()
+                                            ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 603, in _task_validate
+    reward, done, user_message, info = self.task.validate(self.page, self.chat.messages)
+                                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/base.py", line 196, in validate
+    reward, _, message, info = self.evaluator.evaluate(env_state_json, model_response)
+                               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 79, in evaluate
+    is_correct = self.evaluate_with_llm(model_response, eval.rubric)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 53, in evaluate_with_llm
+    llm_grade = generate_from_model(prompt=fuzzy_match_prompt, model=self.llm)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/utils.py", line 15, in generate_from_model
+    client = OpenAI()
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/openai/_client.py", line 135, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+2025-09-24 14:38:16,404 - agisdk.REAL.browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'pop'

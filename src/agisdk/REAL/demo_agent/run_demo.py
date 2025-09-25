@@ -106,6 +106,7 @@ https://github.com/ServiceNow/AgentLab"""
     exp_args = ExpArgs(
         env_args=env_args,
         agent_args=agent_args,
+        save_step_info_pkl=True
     )
 
     # running and logging results

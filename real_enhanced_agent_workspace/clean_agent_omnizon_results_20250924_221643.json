@@ -1,0 +1,147 @@
+{
+  "task_name": "webclones.omnizon-1",
+  "agent_name": "RealEnhancedAgent",
+  "model_name": "claude-3-5-sonnet-20241022",
+  "timestamp": "2025-09-24T22:15:53.356040",
+  "enhanced_features": {
+    "enhanced_selection": true,
+    "use_html": true,
+    "use_axtree": true,
+    "use_screenshot": true,
+    "timeout_ms": 15000
+  },
+  "actions_taken": [
+    {
+      "step": 0,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 1,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 2,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 3,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 4,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 5,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 6,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 7,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 8,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 9,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 10,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 11,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 12,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 13,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 14,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 15,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 16,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 17,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 18,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 19,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 20,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 21,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 22,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 23,
+      "action": "noop()",
+      "timestamp": null
+    },
+    {
+      "step": 24,
+      "action": "noop()",
+      "timestamp": null
+    }
+  ],
+  "intelligent_sequences": [],
+  "context_refreshes": 0,
+  "success": false,
+  "error": null,
+  "execution_time": 49.73678207397461,
+  "final_reward": 0.0,
+  "steps_taken": 25
+}

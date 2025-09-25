@@ -1,0 +1,155 @@
+{
+  "summary": {
+    "total_tasks": 10,
+    "successful_tasks": 0,
+    "failed_tasks": 10,
+    "success_rate": 0.0,
+    "total_duration": 204.43,
+    "avg_duration_per_task": 17.74
+  },
+  "difficulty_breakdown": {
+    "easy": {
+      "total": 3,
+      "successful": 0,
+      "success_rate": 0.0,
+      "avg_duration": 10.12
+    },
+    "medium": {
+      "total": 2,
+      "successful": 0,
+      "success_rate": 0.0,
+      "avg_duration": 10.405
+    },
+    "hard": {
+      "total": 5,
+      "successful": 0,
+      "success_rate": 0.0,
+      "avg_duration": 25.246
+    }
+  },
+  "successful_tasks": [],
+  "failed_tasks": [
+    "webclones.omnizon-1",
+    "webclones.omnizon-2",
+    "webclones.omnizon-3",
+    "webclones.omnizon-4",
+    "webclones.omnizon-5",
+    "webclones.omnizon-6",
+    "webclones.omnizon-7",
+    "webclones.omnizon-8",
+    "webclones.omnizon-9",
+    "webclones.omnizon-10"
+  ],
+  "detailed_results": [
+    {
+      "task_name": "webclones.omnizon-1",
+      "goal": "Search for 'laptop' and display first result",
+      "difficulty": "easy",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 10.76,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:48:01.657508"
+    },
+    {
+      "task_name": "webclones.omnizon-2",
+      "goal": "Search smartphones, add first two to cart, buy third",
+      "difficulty": "medium",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 11.02,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:48:15.681722"
+    },
+    {
+      "task_name": "webclones.omnizon-3",
+      "goal": "Browse Headphones category and retrieve listings",
+      "difficulty": "easy",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.9,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:48:28.583877"
+    },
+    {
+      "task_name": "webclones.omnizon-4",
+      "goal": "Add Marshall speaker + Michael Kors watch, checkout",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.56,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:48:41.147485"
+    },
+    {
+      "task_name": "webclones.omnizon-5",
+      "goal": "Search KTC Gaming Monitor and display specs",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.7,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:48:53.854412"
+    },
+    {
+      "task_name": "webclones.omnizon-6",
+      "goal": "Compare Samsung phones, buy better value",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 48.68,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:49:45.538099"
+    },
+    {
+      "task_name": "webclones.omnizon-7",
+      "goal": "Find most expensive product in Gaming category",
+      "difficulty": "medium",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.79,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:49:58.330090"
+    },
+    {
+      "task_name": "webclones.omnizon-8",
+      "goal": "Search Espresso Machine, buy cheapest with quantity 5",
+      "difficulty": "easy",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.7,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:50:11.036726"
+    },
+    {
+      "task_name": "webclones.omnizon-9",
+      "goal": "Buy PlayStation DualSense with custom payment method",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 9.99,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:50:24.027340"
+    },
+    {
+      "task_name": "webclones.omnizon-10",
+      "goal": "Buy any product with max quantity and latest delivery",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration": 48.3,
+      "error_msg": "0",
+      "timestamp": "2025-09-24T16:51:15.331109"
+    }
+  ]
+}

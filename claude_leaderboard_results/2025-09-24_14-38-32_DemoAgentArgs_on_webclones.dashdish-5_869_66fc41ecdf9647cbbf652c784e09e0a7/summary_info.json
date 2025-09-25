@@ -1,0 +1,110 @@
+{
+    "task_name": "webclones.dashdish-5",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.dashdish-5_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 15,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.dashdish-5_869",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "config": {
+                "hide_aria_labels": true,
+                "latency": 0,
+                "time_notification": 3000,
+                "estimated_tax": 0.67,
+                "run_id": "f1a58d7a-d697-414c-8d04-7431894011d6",
+                "task_id": "dashdish-5",
+                "removePopup": false
+            },
+            "differences": {
+                "foodOrders": {
+                    "added": {
+                        "0": {
+                            "orderId": "ORD-1758750019096-628",
+                            "checkoutDetails": {
+                                "account": {
+                                    "email": "shaun.t.vanweelden@gmail.com"
+                                },
+                                "shipping": {
+                                    "shippingOption": "Pickup",
+                                    "time": "20",
+                                    "address": "1234 Main Street, San Francisco, CA",
+                                    "phone": "(646) 547-7101",
+                                    "isGift": false,
+                                    "deliveryOption": "Standard",
+                                    "dropOffOption": "Leave it at my door",
+                                    "dropOffInstructions": "Please ring the bell and drop off at the door, thank you. Its around the corner on the ground floor"
+                                },
+                                "payment": {
+                                    "id": "1",
+                                    "type": "Visa",
+                                    "cardNumber": "4444111122225097",
+                                    "last4": "5097",
+                                    "expiry": "06/2025",
+                                    "color": "#1a73e8",
+                                    "label": "VISA"
+                                },
+                                "charges": {
+                                    "tip": 2,
+                                    "deliveryFee": 0,
+                                    "serviceFee": 3,
+                                    "estimatedTax": 0.67,
+                                    "totalAmount": 65.67
+                                }
+                            },
+                            "cartItems": [
+                                {
+                                    "id": "1",
+                                    "photoUrl": "https://images.pexels.com/photos/1583884/pexels-photo-1583884.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
+                                    "name": "Loaded Bacon Cheese Fries",
+                                    "price": "18.4",
+                                    "likePercentage": "94%",
+                                    "likeCount": "(37)",
+                                    "restaurantName": "Man vs. Fries",
+                                    "size": "Large",
+                                    "quantity": 3,
+                                    "basePrice": 18.4,
+                                    "extraCost": 1.6,
+                                    "finalPrice": "60.00",
+                                    "uniqueIdentifier": "1-Large-1.6"
+                                }
+                            ],
+                            "createdAt": "2025-09-24T21:40:19.096Z"
+                        }
+                    },
+                    "deleted": {},
+                    "updated": {}
+                }
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 16,
+    "stats.cum_n_token_last_action": 2704,
+    "stats.max_n_token_last_action": 234,
+    "stats.cum_n_token_last_action_error": 40,
+    "stats.max_n_token_last_action_error": 14,
+    "stats.cum_n_token_axtree_txt": 105623,
+    "stats.max_n_token_axtree_txt": 26916,
+    "stats.cum_n_token_pruned_html": 3421967,
+    "stats.max_n_token_pruned_html": 1015952,
+    "stats.cum_step_elapsed": 55.273136377334595,
+    "stats.max_step_elapsed": 5.504816770553589,
+    "stats.cum_agent_elapsed": 83.0336103439331,
+    "stats.max_agent_elapsed": 8.879551410675049,
+    "terminated": true,
+    "truncated": false
+}

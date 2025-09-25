@@ -1,0 +1,523 @@
+2025-09-24 14:50:26,601 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.fly-unified-7_549 in:
+  claude_leaderboard_results/2025-09-24_14-50-26_DemoAgentArgs_on_webclones.fly-unified-7_549_efd6f3d43c9449d5a4d698e484d94e63
+2025-09-24 14:50:26,611 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 14:50:26,611 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 14:50:36,145 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:50:36,146 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:50:36,159 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) To find flights from Dallas to Fresno on December 4th, I need to:
+   - Fill in the origin (Dallas)
+   - Fill in the destination (Fresno)
+   - Set the departure date
+   - Switch to one-way flight since only one date is mentioned
+
+2) Looking at the current state, first I should switch to one-way flight since we're only interested in flights on December 4th.
+
+3) I can see there's a radio button for "One-way" with bid "204".
+
+Let me click the one-way radio button first.
+
+```click("204")```
+
+Note: After this action, I'll proceed with filling in the origin, destination, and date fields to search for the flights on December 4th.
+
+2025-09-24 14:50:44,848 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:50:44,850 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:50:44,866 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) I've already selected one-way flight option. Now I need to fill in the origin field.
+
+2) Looking at the page, I can see:
+   - A combobox for Origin with placeholder text (bid "230")
+   - We need to enter "Dallas"
+
+3) The combobox accepts text input, so I should fill in "Dallas" to search for flights from there.
+
+4) The bid for this combobox is "230" based on the accessibility tree.
+
+Let me fill in the origin field with "Dallas":
+
+```fill("230", "Dallas")```
+
+After this action, I'll proceed with filling in the destination (Fresno) and setting the departure date to December 4th.
+
+2025-09-24 14:50:56,116 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:50:56,117 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:50:56,124 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) I've already:
+   - Selected one-way flight
+   - Filled in Dallas as the origin
+
+2) Next, I need to fill in Fresno as the destination.
+
+3) Looking at the accessibility tree:
+   - There's a destination combobox with bid "250"
+   - It's labeled as "Destination"
+   - It's currently empty and ready for input
+
+4) The action needed is to fill this combobox with "Fresno"
+
+```fill("250", "Fresno")```
+
+After this action, I'll need to set the departure date to December 4th to complete the search criteria.
+
+2025-09-24 14:51:07,949 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:07,951 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:07,968 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) So far I have:
+   - Selected one-way flight
+   - Set Dallas as origin
+   - Set Fresno as destination
+
+2) Next, I need to set the departure date to December 4th.
+
+3) Looking at the accessibility tree:
+   - There's a textbox for "Depart" with bid "404"
+   - I need to input December 4th
+
+4) For date inputs, I should use a standard date format to ensure it's accepted properly. The format MM/DD/YYYY should work.
+
+```fill("404", "12/04/2023")```
+
+After this action, I'll be able to click the "Find flights" button to see how many flights are available.
+
+2025-09-24 14:51:16,044 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("404")
+    - locator resolved to <input readonly value="" bid="404" placeholder="Depart" browsergym_set_of_marks="1" class="custom-datepicker-input" browsergym_visibility_ratio="1"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 519, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 541, in <module>
+  File "<string>", line 332, in fill
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15917, in clear
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.clear(
+        ^^^^^^^^^^^^^^^^^^^^^
+            timeout=timeout, noWaitAfter=no_wait_after, force=force
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 221, in clear
+    await self._frame._fill(self._selector, value="", title="Clear", **params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 602, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("404")
+    - locator resolved to <input readonly value="" bid="404" placeholder="Depart" browsergym_set_of_marks="1" class="custom-datepicker-input" browsergym_visibility_ratio="1"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+
+2025-09-24 14:51:21,502 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:21,504 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:21,522 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me analyze the situation:
+
+1) My last action resulted in an error because I tried to directly fill in the date field, but the error message indicates that the input is readonly:
+   - The element has "readonly" attribute
+   - It's described as "custom-datepicker-input" in the class name
+   - Direct text input is not allowed
+
+2) For date picker fields that are readonly, we typically need to:
+   - Click on the field first to open the date picker
+   - Then select the date through the calendar interface that appears
+
+3) Looking at the current state:
+   - We need to click on the Depart field (bid "404") to open the date picker
+   - This should reveal a calendar interface where we can select December 4th
+
+Let me click on the date field to open the date picker:
+
+```click("404")```
+
+After this action, a calendar interface should appear where we can select December 4th.
+
+2025-09-24 14:51:30,752 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:30,753 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:30,762 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state after clicking the date field (bid "404"):
+   - The calendar interface is now visible
+   - Looking at the comboboxes for month and year:
+     * The current month displayed is September 2025
+     * Need to change to December 2023
+
+2) I need to:
+   - Change the month from September to December
+   - Change the year from 2025 to 2023
+   - Then select the 4th day
+
+3) Looking at the accessibility tree:
+   - There's a month combobox with bid "436" set to "September"
+   - There's a year combobox with bid "450" set to "2025"
+   - The month should be changed first
+
+4) The month combobox (bid "436") has a menu with all months, and I need to select "December"
+
+Let me select December in the month dropdown:
+
+```select_option("436", "December")```
+
+After this action, I'll need to:
+- Change the year to 2023
+- Select the 4th day of the month
+
+2025-09-24 14:51:38,884 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:38,886 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:38,908 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - I've selected one-way flight
+   - Set Dallas as origin
+   - Set Fresno as destination
+   - Clicked the date field to open the calendar
+   - Changed the month to December
+
+2) Next step needed:
+   - Change the year from 2025 to 2023
+   - Looking at the accessibility tree:
+     * Year combobox has bid "450"
+     * It currently shows 2025
+     * 2023 is available as an option
+
+3) For changing the year:
+   - I need to use select_option with bid "450"
+   - Select "2023" as the value
+
+```select_option("450", "2023")```
+
+After this action, I'll need to select December 4th from the calendar grid to complete the date selection.
+
+2025-09-24 14:51:46,913 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:46,915 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:46,939 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - One-way flight is selected
+   - Dallas is set as origin
+   - Fresno is set as destination
+   - Calendar is open
+   - Month is set to December 2023
+
+2) Now I need to select December 4th from the calendar:
+   - Looking at the accessibility tree
+   - There's a listbox with bid "463" for the month
+   - Within it, there's an option "Choose Monday, December 4th, 2023" (bid "638")
+   - This is exactly the date we want
+
+3) Action needed:
+   - Click on December 4th
+   - This will select the date and close the calendar
+   - The bid to use is "638"
+
+```click("638")```
+
+After this action, I can proceed to click the "Find flights" button to see how many flights are available.
+
+2025-09-24 14:51:56,028 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:51:56,030 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:51:56,044 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - One-way flight is selected
+   - Dallas is set as origin
+   - Fresno is set as destination
+   - Date is set to December 4th
+
+2) All required search criteria are now set. To find out how many flights are available, I need to:
+   - Click the "Find flights" button
+   - Looking at the accessibility tree, I can see:
+     * The "Find flights" button has bid "305"
+
+3) Next logical action:
+   - Click the "Find flights" button to search and see available flights
+   - This will submit our search and show the results
+
+```click("305")```
+
+After this action, the page should display search results showing available flights from Dallas to Fresno on December 4th, which I can then count and report to the user.
+
+2025-09-24 14:52:06,672 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:06,672 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:06,679 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me analyze the situation:
+
+1) I have completed all the necessary steps to search for flights:
+   - Selected one-way flight
+   - Set Dallas as origin
+   - Set Fresno as destination
+   - Set the date to December 4th
+   - Clicked the "Find flights" button
+
+2) However, looking at the current state of the page:
+   - The origin field shows an error message "Please enter a valid origin."
+   - The destination field shows an error message "Please enter a valid destination."
+   - This suggests that my inputs weren't properly registered by the form
+
+3) I need to revise my approach:
+   - The comboboxes for origin and destination likely require selecting from a dropdown list
+   - Simply typing the city names wasn't sufficient
+   - I should click or focus on the origin field first to see the available options
+
+Let me start by focusing on the origin field:
+
+```click("230")```
+
+After this action, a dropdown with available cities should appear, allowing me to select Dallas properly.
+
+2025-09-24 14:52:16,520 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:16,521 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:16,559 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - I've clicked on the origin combobox (bid "230")
+   - Looking at the accessibility tree, a listbox with options has appeared
+   - Among the options, I can see "D a l l a s / F o r t W o r t h , T X , U S ( D F W )" (bid "891")
+
+2) Past actions:
+   - Previously tried typing "Dallas" which didn't work
+   - Need to properly select from the dropdown list instead
+
+3) Next logical step:
+   - Select Dallas/Fort Worth from the dropdown list
+   - This option has bid "891"
+   - Need to click this option to properly set the origin
+
+```click("891")```
+
+After this action, I'll need to select Fresno from the destination dropdown in a similar manner.
+
+2025-09-24 14:52:25,295 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:25,296 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:25,311 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - Successfully selected Dallas/Fort Worth (DFW) as the origin
+   - Need to select Fresno as the destination
+
+2) Like with the origin field:
+   - Simply typing "Fresno" won't work
+   - Need to select from the dropdown list
+   - The destination combobox has bid "250"
+
+3) Next logical step:
+   - Click on the destination field to reveal the dropdown with available cities
+   - Then I can select Fresno from the options
+
+```click("250")```
+
+After this action, I expect a dropdown list to appear showing available destinations, including Fresno, which I can then select properly from the list.
+
+2025-09-24 14:52:35,783 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:35,786 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:35,836 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+   - Dallas/Fort Worth (DFW) is set as origin
+   - I've clicked on the destination field (bid "250")
+   - Looking at the accessibility tree, a listbox with destination options has appeared
+   - I can see "F r e s n o , C A , U S ( F A T )" in the list with bid "4454"
+
+2) Past actions:
+   - Successfully selected DFW as origin from dropdown
+   - Clicked destination field to show options
+   - Need to select Fresno properly from dropdown
+
+3) Next logical step:
+   - Select Fresno (FAT) from the destination dropdown
+   - This will properly set the destination in a way the system recognizes
+   - Need to click on bid "4454" which corresponds to Fresno
+
+```click("4454")```
+
+After this action, I can proceed with setting the date to December 4th and then search for available flights.
+
+2025-09-24 14:52:45,153 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:45,159 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:45,177 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current progress:
+   - Successfully selected Dallas/Fort Worth (DFW) as origin
+   - Successfully selected Fresno (FAT) as destination
+   - One-way flight option is selected
+   - Still need to set the date to December 4th
+
+2) Looking at the accessibility tree:
+   - There's a departure date field (bid "5199") with current value "Dec 4"
+   - This matches the date we need
+   - The date is already correctly set to December 4th
+
+3) All required fields are now properly filled:
+   - Origin: DFW
+   - Destination: FAT
+   - Date: Dec 4
+   - One-way flight selected
+
+4) Next logical step:
+   - Click the "Find flights" button (bid "305")
+   - This should now work since all fields are properly filled
+   - After this, we'll be able to see and count available flights
+
+```click("305")```
+
+After this action, we should see the search results showing available flights from Dallas to Fresno on December 4th.
+
+2025-09-24 14:52:56,570 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:52:56,570 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:52:56,587 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state after clicking the search button:
+   - Origin (DFW) and destination (FAT) are properly set
+   - Date is set to December 4th
+   - Looking at the accessibility tree, I can see the flight search results
+
+2) Looking at the search results:
+   - I can see 3 different flights listed
+   - Each flight is non-stop (0 STOP)
+   - Flight times:
+     * First flight: 7:43 AM - 10:57 AM
+     * Second flight: 6:06 AM - 7:27 AM
+     * Third flight: 1:50 PM - 4:04 PM
+
+3) Since I've found the information requested in the goal ("How many flights are available from Dallas to Fresno on December 4th?"), I should report this to the user.
+
+```send_msg_to_user("There are 3 flights available from Dallas to Fresno on December 4th.")```
+
+2025-09-24 14:52:56,595 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received a multi-action, only single-actions are allowed.
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 517, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/action/highlevel.py", line 329, in to_python_code
+    raise ValueError("Received a multi-action, only single-actions are allowed.")
+ValueError: Received a multi-action, only single-actions are allowed.
+2025-09-24 14:53:02,631 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 14:53:02,638 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 14:53:02,664 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think step by step:
+
+1) Current state:
+- All search parameters are properly set
+- The search results are visible
+- I can clearly see 3 flights available
+- I got an error on my last attempt because I tried to directly send a message
+
+2) The error message indicates:
+- Only single actions are allowed
+- I need to just send the message without additional commentary
+
+3) To accomplish the goal:
+- I just need to report the number of flights available
+- Keep the message clear and direct
+- Use only the send_msg_to_user action
+
+```send_msg_to_user("3 flights are available from Dallas to Fresno on December 4th")```
+
+2025-09-24 14:53:04,266 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.fly-unified-7.
+OpenAIError:
+The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 278, in run
+    step_info.from_step(env, action, obs_preprocessor=agent.obs_preprocessor)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 401, in from_step
+    self.obs, self.reward, self.terminated, self.truncated, env_info = env.step(action)
+                                                                       ~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 125, in step
+    observation, reward, terminated, truncated, info = self.env.step(action)
+                                                       ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/wrappers/common.py", line 393, in step
+    return super().step(action)
+           ~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/gymnasium/core.py", line 327, in step
+    return self.env.step(action)
+           ~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 578, in step
+    reward, done, user_message, task_info = self._task_validate()
+                                            ~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 603, in _task_validate
+    reward, done, user_message, info = self.task.validate(self.page, self.chat.messages)
+                                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/base.py", line 196, in validate
+    reward, _, message, info = self.evaluator.evaluate(env_state_json, model_response)
+                               ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 79, in evaluate
+    is_correct = self.evaluate_with_llm(model_response, eval.rubric)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/evaluate.py", line 53, in evaluate_with_llm
+    llm_grade = generate_from_model(prompt=fuzzy_match_prompt, model=self.llm)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/webclones/utils.py", line 15, in generate_from_model
+    client = OpenAI()
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/openai/_client.py", line 135, in __init__
+    raise OpenAIError(
+        "The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable"
+    )
+openai.OpenAIError: The api_key client option must be set either by passing api_key to the client or by setting the OPENAI_API_KEY environment variable
+
+2025-09-24 14:53:04,266 - agisdk.REAL.browsergym.experiments.loop - ERROR - Error while saving step info in the finally block: 'NoneType' object has no attribute 'pop'

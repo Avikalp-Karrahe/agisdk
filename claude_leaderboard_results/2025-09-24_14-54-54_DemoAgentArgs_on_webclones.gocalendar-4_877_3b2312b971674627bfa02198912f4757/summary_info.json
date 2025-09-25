@@ -1,0 +1,61 @@
+{
+    "task_name": "webclones.gocalendar-4",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.gocalendar-4_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 8,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.gocalendar-4_877",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "eventsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {
+                    "3h4i5j6k-7890-3456-7890-123456789905": {
+                        "title": "Project Kickoff",
+                        "location": "Zoom"
+                    }
+                }
+            },
+            "calendarsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "joinedEventsDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 9,
+    "stats.cum_n_token_last_action": 1251,
+    "stats.max_n_token_last_action": 212,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_axtree_txt": 13369,
+    "stats.max_n_token_axtree_txt": 3432,
+    "stats.cum_n_token_pruned_html": 180272,
+    "stats.max_n_token_pruned_html": 33798,
+    "stats.cum_step_elapsed": 44.609983921051025,
+    "stats.max_step_elapsed": 7.893188714981079,
+    "stats.cum_agent_elapsed": 40.453530073165894,
+    "stats.max_agent_elapsed": 6.619165897369385,
+    "terminated": true,
+    "truncated": false
+}

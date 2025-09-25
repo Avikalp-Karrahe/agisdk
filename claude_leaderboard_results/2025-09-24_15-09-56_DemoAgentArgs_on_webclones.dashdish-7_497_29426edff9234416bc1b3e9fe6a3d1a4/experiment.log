@@ -1,0 +1,109 @@
+2025-09-24 15:09:56,582 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.dashdish-7_497 in:
+  claude_leaderboard_results/2025-09-24_15-09-56_DemoAgentArgs_on_webclones.dashdish-7_497_29426edff9234416bc1b3e9fe6a3d1a4
+2025-09-24 15:09:56,594 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 15:09:56,594 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 15:10:11,108 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:10:11,110 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:10:11,486 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) My goal is to select "Express Delivery" for an order from "DragonEats" of "Mushroom Swiss Burger" and complete the checkout with the pre-loaded Visa card.
+
+2) First, I need to find DragonEats on the page. Looking through the accessibility tree, I can see DragonEats listed as a heading with an image, with a 4.8 rating and 0.3 mi distance.
+
+3) Looking at element [1006], it shows:
+```
+[1006] image 'Image DragonEats'
+[1008] heading 'DragonEats'
+[1012] heading '4.8'
+```
+
+4) I need to click on DragonEats to access their menu and find the Mushroom Swiss Burger.
+
+5) I will click on element [1008] which corresponds to the DragonEats heading to navigate to their menu.
+
+Therefore, my next action is:
+```click("1008")```
+
+2025-09-24 15:10:20,680 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:10:20,683 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:10:20,701 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I need to select the "Mushroom Swiss Burger" from DragonEats' menu.
+
+2) Looking at the current page's accessibility tree, I can see the "Mushroom Swiss Burger" listed under "Most Liked Items From The Menu":
+```
+[382] heading 'Mushroom Swiss Burger'
+[384] paragraph ''
+  StaticText '$'
+  StaticText '16.41'
+  StaticText '•'
+[379] button 'Add'
+```
+
+3) To add the Mushroom Swiss Burger to my cart, I need to click the "Add" button associated with it (element [379]).
+
+4) This should add the item to my cart and allow me to proceed with selecting Express Delivery and checkout.
+
+Therefore, my next action is:
+```click("379")```
+
+2025-09-24 15:10:31,515 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:10:31,517 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:10:31,533 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I see I'm now on the detailed view of the Mushroom Swiss Burger, where I can customize my order.
+
+2) The page shows size options and other preferences:
+- Small • 230 cal
+- Medium • 320 cal • +$0.90
+- Large • 480 cal • +$1.60 (currently selected)
+
+3) Looking at the bottom of the page, there's an "Add to cart" button with bid [739] showing "$18.01"
+
+4) Since the burger is already customized (Large size is selected) and I don't need to make any other modifications, I can proceed to add it to the cart.
+
+5) I should click the "Add to cart" button to proceed with the order and then move on to selecting Express Delivery.
+
+Therefore, my next action is:
+```click("739")```
+
+2025-09-24 15:10:37,342 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:10:37,352 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.423433 seconds
+2025-09-24 15:10:37,968 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:10:37,968 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.822375 seconds
+2025-09-24 15:10:39,085 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:10:39,086 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.dashdish-7.
+RateLimitError:
+Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's (f4d1d469-8c11-416e-88f8-7bdeb3590d0f) maximum usage increase rate for input tokens per minute. Please scale up your input tokens usage more gradually to stay within the acceleration limit. For details, refer to: https://docs.claude.com/en/api/rate-limits."}, 'request_id': 'req_011CTTzSmYZVHv35B8ivzyHP'}
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 563, in get_action
+    action = self.query_model(system_msgs, user_msgs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 299, in query_model
+    response = self.client.messages.create(**create_params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/resources/messages/messages.py", line 930, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<26 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1324, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1112, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's (f4d1d469-8c11-416e-88f8-7bdeb3590d0f) maximum usage increase rate for input tokens per minute. Please scale up your input tokens usage more gradually to stay within the acceleration limit. For details, refer to: https://docs.claude.com/en/api/rate-limits."}, 'request_id': 'req_011CTTzSmYZVHv35B8ivzyHP'}
+

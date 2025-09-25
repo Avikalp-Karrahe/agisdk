@@ -1,0 +1,339 @@
+2025-09-24 15:08:10,283 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.opendining-4_585 in:
+  claude_leaderboard_results/2025-09-24_15-08-10_DemoAgentArgs_on_webclones.opendining-4_585_ba21993d95184247bcb081b8607c2e5a
+2025-09-24 15:08:10,295 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 15:08:10,295 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 15:08:21,959 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:08:21,961 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:08:22,008 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I need to search for a Japanese restaurant on September 2nd at 4:30 PM for 7 people.
+
+2) Looking at the page, I can see there are several fields I need to fill:
+   - A date field showing "Jul 18"
+   - A time dropdown showing "1:00 PM"
+   - A guests dropdown showing "2 people"
+   - A search box for "Location, Restaurant, or Cuisine"
+
+3) First, I need to fill in the date field (bid 126) with September 2nd.
+   
+4) Looking at other elements on the page, this is the first field to modify.
+
+Let me start by setting the date:
+
+```fill("126", "Sep 2")```
+
+This will change the date to September 2nd. After this action, I will need to:
+- Change the time to 4:30 PM
+- Change the number of guests to 7
+- Enter "Japanese" in the search field
+But I'll handle those one step at a time after this action is completed.
+
+2025-09-24 15:08:30,072 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("126")
+    - locator resolved to <input readonly id=":r1:" bid="126" type="text" value="Jul 18" aria-invalid="false" browsergym_set_of_marks="1" browsergym_visibility_ratio="1" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart Mui-readOnly MuiInputBase-readOnly css-162edyi"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 519, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 541, in <module>
+  File "<string>", line 332, in fill
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15917, in clear
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.clear(
+        ^^^^^^^^^^^^^^^^^^^^^
+            timeout=timeout, noWaitAfter=no_wait_after, force=force
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 221, in clear
+    await self._frame._fill(self._selector, value="", title="Clear", **params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 602, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("126")
+    - locator resolved to <input readonly id=":r1:" bid="126" type="text" value="Jul 18" aria-invalid="false" browsergym_set_of_marks="1" browsergym_visibility_ratio="1" class="MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputSizeSmall MuiInputBase-inputAdornedStart Mui-readOnly MuiInputBase-readOnly css-162edyi"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+
+2025-09-24 15:08:36,487 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:08:36,487 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:08:36,551 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) My previous attempt to directly fill in the date field failed because the element is read-only. Looking at the page more carefully, I notice it's likely a date picker component.
+
+2) I should first click on the date field to open the date picker:
+
+3) Looking at the accessibility tree, I can see that bid "126" is a textbox showing "Jul 18", so I should click this to open the date picker.
+
+```click("126")```
+
+After this action, I expect a date picker calendar to appear where I can select September 2nd. This is a better approach than trying to directly fill in a read-only field.
+
+The next steps after this will be:
+- Select September 2nd from the date picker once it appears
+- Change the time to 4:30 PM
+- Change the number of guests to 7
+- Enter "Japanese" in the search field
+But I'll handle those after successfully opening the date picker.
+
+2025-09-24 15:08:49,055 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:08:49,061 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:08:49,114 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've clicked on the date field and now I can see the calendar date picker is visible in the accessibility tree.
+
+2) Looking at the current view, it shows July 2024. I need to:
+   - First navigate to September (2 months forward)
+   - Then select the 2nd day
+
+3) I see there's a "Next month" button with bid 2357 in the accessibility tree that I can use to move forward.
+
+4) I need to click this button once to get to August, and then once more to get to September.
+
+```click("2357")```
+
+After this action:
+- I'll need to click "Next month" one more time to get to September
+- Then select the 2nd day
+- Then move on to setting the time to 4:30 PM
+- Change guests to 7
+- Enter "Japanese" in search field
+
+But first let's navigate to August, then we can proceed with the next steps one at a time.
+
+2025-09-24 15:08:58,915 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:08:58,917 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:08:58,969 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I'm currently in the date picker, and I've just clicked the "Next month" button once to move from July to August.
+
+2) I need to get to September 2nd, so I need to click the "Next month" button one more time to advance from August to September.
+
+3) The "Next month" button is still available in the accessibility tree with bid 2357.
+
+```click("2357")```
+
+After this action, I expect to be in September, and then I can:
+- Select the 2nd day of September
+- Set the time to 4:30 PM
+- Change the number of guests to 7
+- Enter "Japanese" in the search field
+- Click search
+
+But first let's make sure we get to September before proceeding with selecting the specific date.
+
+2025-09-24 15:09:09,164 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:09,167 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:09,237 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've successfully navigated the date picker to September 2024. Now I need to select the 2nd day of the month.
+
+2) Looking at the accessibility tree, I can see the calendar grid structure with bid 2362 and within it, I can see individual gridcells for each day.
+
+3) Specifically, I can see the "2" gridcell with bid 2523 that I need to click to select September 2nd.
+
+```click("2523")```
+
+After this action:
+- The date should be set to September 2nd
+- Next I'll need to:
+  - Change the time to 4:30 PM
+  - Set the number of guests to 7
+  - Enter "Japanese" in the search field
+  - Click search
+
+But first let's select the correct date, then we'll proceed with the remaining steps one at a time.
+
+2025-09-24 15:09:19,110 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:19,112 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:19,164 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've successfully set the date to September 2nd. Now I need to change the time to 4:30 PM.
+
+2) Looking at the page, I can see a time dropdown combobox (bid 131) that currently shows "1:00 PM".
+
+3) Based on the accessibility tree, there's a combobox with the label "Select time" that I need to click first to open the time selection dropdown.
+
+4) The combobox has bid 131, so I should click it to open the time selection options.
+
+```click("131")```
+
+After this action:
+- The time dropdown should open showing various time options
+- I'll then need to:
+  - Select 4:30 PM from the dropdown
+  - Change the number of guests to 7
+  - Enter "Japanese" in the search field
+  - Click search
+
+But first let's open the time dropdown so we can select the correct time.
+
+2025-09-24 15:09:27,752 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:27,753 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:27,803 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've clicked on the time combobox and now I can see the full list of time options in the accessibility tree.
+
+2) Looking at the accessibility tree, I can see option "4:30 PM" with bid 2661 which is exactly what we need.
+
+3) The options are listed chronologically, and 4:30 PM is clearly visible in the list of options.
+
+4) To select the time, I need to click directly on the 4:30 PM option.
+
+```click("2661")```
+
+After this action:
+- The time should be set to 4:30 PM
+- Next I'll need to:
+  - Change the number of guests to 7
+  - Enter "Japanese" in the search field
+  - Click search
+
+But first let's make sure we get the time set correctly before moving on to the next steps.
+
+2025-09-24 15:09:38,465 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:38,473 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:38,532 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've successfully:
+   - Set the date to September 2nd
+   - Set the time to 4:30 PM
+
+2) The next step is to change the number of guests from 2 to 7 people.
+
+3) Looking at the accessibility tree, I can see a combobox with bid 142 labeled "Select number of guests" that currently shows "2 people".
+
+4) Similar to the time selection, I first need to click this combobox to open the dropdown menu with the guest number options.
+
+```click("142")```
+
+After this action:
+- The guests dropdown should open showing various options
+- I'll then need to:
+  - Select 7 people from the dropdown
+  - Enter "Japanese" in the search field
+  - Click search
+
+But first let's open the guests dropdown so we can select the correct number of guests.
+
+2025-09-24 15:09:47,438 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:09:47,439 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:09:47,484 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I've successfully:
+   - Set the date to September 2nd
+   - Set the time to 4:30 PM
+   - Clicked to open the guests dropdown menu
+
+2) Looking at the accessibility tree, I can see the list of options for number of guests, and "7 people" is one of the options with bid 2709.
+
+3) I need to click on the "7 people" option to select it.
+
+```click("2709")```
+
+After this action:
+- The number of guests should be set to 7 people
+- Next I'll need to:
+  - Enter "Japanese" in the search field
+  - Click search
+
+But first let's make sure we get the correct number of guests selected before moving on to the search step.
+
+2025-09-24 15:09:52,381 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:09:52,382 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.473925 seconds
+2025-09-24 15:09:53,095 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:09:53,096 - anthropic._base_client - INFO - Retrying request to /v1/messages in 0.986875 seconds
+2025-09-24 15:09:54,288 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 429 Too Many Requests"
+2025-09-24 15:09:54,290 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.opendining-4.
+RateLimitError:
+Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's (f4d1d469-8c11-416e-88f8-7bdeb3590d0f) maximum usage increase rate for input tokens per minute. Please scale up your input tokens usage more gradually to stay within the acceleration limit. For details, refer to: https://docs.claude.com/en/api/rate-limits."}, 'request_id': 'req_011CTTzPU2mv44uARNtzTFM3'}
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 563, in get_action
+    action = self.query_model(system_msgs, user_msgs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 299, in query_model
+    response = self.client.messages.create(**create_params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/resources/messages/messages.py", line 930, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<26 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1324, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1112, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.RateLimitError: Error code: 429 - {'type': 'error', 'error': {'type': 'rate_limit_error', 'message': "This request would exceed your organization's (f4d1d469-8c11-416e-88f8-7bdeb3590d0f) maximum usage increase rate for input tokens per minute. Please scale up your input tokens usage more gradually to stay within the acceleration limit. For details, refer to: https://docs.claude.com/en/api/rate-limits."}, 'request_id': 'req_011CTTzPU2mv44uARNtzTFM3'}
+

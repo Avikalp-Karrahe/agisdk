@@ -1,0 +1,93 @@
+{
+    "task_name": "webclones.networkin-5",
+    "agent_type": "DemoAgentArgs",
+    "model_name": "claude-3-5-sonnet-20241022",
+    "max_steps": 25,
+    "cache_key": "webclones.networkin-5_DemoAgentArgs_claude-3-5-sonnet-20241022_25",
+    "experiment_status": "completed",
+    "run_uuid": "f1a58d7a-d697-414c-8d04-7431894011d6",
+    "n_steps": 6,
+    "cum_reward": 1.0,
+    "cum_raw_reward": 0,
+    "err_msg": null,
+    "stack_trace": null,
+    "completed": true,
+    "success": true,
+    "error": false,
+    "score": 0.0,
+    "task_id": "webclones.networkin-5_740",
+    "agent_response": "",
+    "finish_state": {
+        "env_state": {
+            "contactListDiff": {
+                "added": {
+                    "1": {
+                        "id": "johnsmith",
+                        "headline": "Senior Software Engineer",
+                        "photoUrl": "/images/profiles/johnsmith.png",
+                        "name": "John Smith",
+                        "date": "2025-09-24T22:03:28.193Z",
+                        "expanded": false,
+                        "lastMessage": "Hi John, I noticed we're both working in software engineering. I'd love to connect and share experiences in building scalable software solutions. Looking forward to networking with you!",
+                        "lastMessageAuthor": "Div Garg",
+                        "messages": [
+                            {
+                                "id": "7a972ef6-7557-4dac-bdc4-2afb17184a79",
+                                "author": "Div Garg",
+                                "photoUrl": "/images/profiles/svanweelden.png",
+                                "timestamp": "2025-09-24T22:03:28.194Z",
+                                "message": "Hi John, I noticed we're both working in software engineering. I'd love to connect and share experiences in building scalable software solutions. Looking forward to networking with you!",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                },
+                "deleted": {},
+                "updated": {}
+            },
+            "profilesDiff": {
+                "added": {
+                    "1": {
+                        "connectionName": "John Smith"
+                    }
+                },
+                "deleted": {},
+                "updated": {
+                    "1": {
+                        "connectionGrade": "1st"
+                    }
+                }
+            },
+            "searchHistoryDiff": {
+                "added": {},
+                "deleted": {},
+                "updated": {}
+            },
+            "connectionRequestsDiff": {
+                "removed": []
+            },
+            "feedPostsDiff": {
+                "added": [],
+                "removed": [],
+                "modified": []
+            }
+        }
+    },
+    "eval_results": [],
+    "env_setup_error": null,
+    "stats.cum_steps": 7,
+    "stats.cum_n_token_last_action": 823,
+    "stats.max_n_token_last_action": 219,
+    "stats.cum_n_token_last_action_error": 0,
+    "stats.max_n_token_last_action_error": 0,
+    "stats.cum_n_token_axtree_txt": 10036,
+    "stats.max_n_token_axtree_txt": 3697,
+    "stats.cum_n_token_pruned_html": 146594,
+    "stats.max_n_token_pruned_html": 55498,
+    "stats.cum_step_elapsed": 30.861104249954224,
+    "stats.max_step_elapsed": 8.299070358276367,
+    "stats.cum_agent_elapsed": 28.060386657714844,
+    "stats.max_agent_elapsed": 5.558395862579346,
+    "terminated": true,
+    "truncated": false
+}

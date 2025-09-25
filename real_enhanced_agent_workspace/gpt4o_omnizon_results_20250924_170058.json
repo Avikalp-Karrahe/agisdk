@@ -1,0 +1,139 @@
+{
+  "test_info": {
+    "model": "gpt-4o",
+    "agent": "RealEnhancedAgent",
+    "test_date": "2025-09-24T17:00:58.608037",
+    "total_tasks": 10,
+    "successful_tasks": 0,
+    "success_rate": 0.0
+  },
+  "difficulty_breakdown": {
+    "easy": {
+      "total": 3,
+      "successful": 0,
+      "success_rate": 0.0
+    },
+    "medium": {
+      "total": 2,
+      "successful": 0,
+      "success_rate": 0.0
+    },
+    "hard": {
+      "total": 5,
+      "successful": 0,
+      "success_rate": 0.0
+    }
+  },
+  "detailed_results": [
+    {
+      "task_name": "webclones.omnizon-1",
+      "difficulty": "easy",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.588655"
+    },
+    {
+      "task_name": "webclones.omnizon-2",
+      "difficulty": "medium",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.591017"
+    },
+    {
+      "task_name": "webclones.omnizon-3",
+      "difficulty": "easy",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.593963"
+    },
+    {
+      "task_name": "webclones.omnizon-4",
+      "difficulty": "hard",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.595976"
+    },
+    {
+      "task_name": "webclones.omnizon-5",
+      "difficulty": "hard",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.598024"
+    },
+    {
+      "task_name": "webclones.omnizon-6",
+      "difficulty": "hard",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.600007"
+    },
+    {
+      "task_name": "webclones.omnizon-7",
+      "difficulty": "medium",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.602056"
+    },
+    {
+      "task_name": "webclones.omnizon-8",
+      "difficulty": "easy",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.604030"
+    },
+    {
+      "task_name": "webclones.omnizon-9",
+      "difficulty": "hard",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.605986"
+    },
+    {
+      "task_name": "webclones.omnizon-10",
+      "difficulty": "hard",
+      "model": "gpt-4o",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 0,
+      "duration_seconds": 0.0,
+      "error_message": "",
+      "timestamp": "2025-09-24T17:00:58.607981"
+    }
+  ]
+}

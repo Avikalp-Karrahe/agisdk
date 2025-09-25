@@ -1,0 +1,341 @@
+2025-09-24 15:13:20,541 - agisdk.REAL.browsergym.experiments.loop - INFO - Running experiment DemoAgentArgs_on_webclones.fly-unified-7_240 in:
+  claude_leaderboard_results/2025-09-24_15-13-20_DemoAgentArgs_on_webclones.fly-unified-7_240_28188b875c014cef984d97f95f857e0e
+2025-09-24 15:13:20,552 - agisdk.REAL.browsergym.webclones.base - INFO - Using run_id from environment variable: f1a58d7a-d697-414c-8d04-7431894011d6
+2025-09-24 15:13:20,552 - agisdk.REAL.browsergym.core.env - WARNING - Overriding the task's viewport parameter ({'width': 1280, 'height': 720} => {'width': 1280, 'height': 720}). This might change the task's behaviour and difficulty.
+2025-09-24 15:13:29,184 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:13:29,184 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:13:29,191 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) The goal is to find flights from Dallas to Fresno on December 4th
+
+2) I need to fill out the flight search form with:
+   - Origin: Dallas 
+   - Destination: Fresno
+   - Date: December 4th
+   - One-way since we only care about flights on December 4th
+
+3) First, I should change from roundtrip to one-way since we only need one direction
+
+4) Looking at the accessibility tree, I can see the radio button for "One-way" with bid "195"
+
+Let me click that first:
+
+```click("195")```
+
+This will switch the form to one-way mode, after which I'll proceed with filling in the origin and destination fields.
+
+2025-09-24 15:13:38,673 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:13:38,675 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:13:38,691 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) The one-way option is already selected (checked='true' in the tree), so my previous click wasn't necessary
+
+2) Now I need to fill in the origin field for Dallas
+
+3) Looking at the accessibility tree, I see a combobox for "Origin" with bid "221"
+
+4) I should fill this field with "Dallas"
+
+```fill("221", "Dallas")```
+
+This will set the departure city to Dallas. After this, I'll proceed with filling in the destination (Fresno) and the date (December 4th).
+
+2025-09-24 15:13:49,921 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:13:49,924 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:13:49,940 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) Looking at the current state, I successfully filled in Dallas as the origin
+
+2) Now I need to select Dallas/Fort Worth (DFW) specifically from the dropdown that appeared
+   - I see in the tree there's an option "Dallas /Fort Worth, TX, US (DFW)" with bid "402"
+
+3) I should click this option to properly set the origin airport
+
+```click("402")```
+
+After this, I'll proceed to fill in the destination field with Fresno.
+
+2025-09-24 15:13:57,199 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:13:57,201 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:13:57,218 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I have successfully set Dallas/Fort Worth (DFW) as the origin 
+
+2) Now I need to set Fresno as the destination
+
+3) Looking at the accessibility tree, I can see:
+   - A combobox for destination with bid "241" 
+   - It's currently empty and has a label "Destination"
+
+4) I should fill this combobox with "Fresno"
+
+```fill("241", "Fresno")```
+
+After this, I'll select the specific Fresno airport from the dropdown that appears and then proceed to set the date to December 4th.
+
+2025-09-24 15:14:08,473 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:08,474 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:08,486 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I've filled in "Fresno" in the destination field
+
+2) Looking at the current state in the accessibility tree:
+   - I see "Fresno, CA, US (FAT)" is showing up as an option (bid "415")
+   - This is the correct airport we want to select
+
+3) I should click this option to properly set the destination airport
+
+```click("415")```
+
+After this, I'll proceed to set the travel date to December 4th in the departure date field.
+
+2025-09-24 15:14:16,377 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:16,377 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:16,385 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I have successfully set:
+   - Origin: Dallas/Fort Worth (DFW)
+   - Destination: Fresno (FAT)
+
+2) Now I need to set the date to December 4th
+
+3) Looking at the accessibility tree:
+   - I see a textbox labeled "Depart" with bid "421"
+   - This is where I need to enter the date
+
+4) I should fill this field with the date in a standard format (MM/DD/YYYY)
+
+```fill("421", "12/04/2023")```
+
+After this, I'll be able to click the "Find flights" button to search for available flights.
+
+2025-09-24 15:14:24,421 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("421")
+    - locator resolved to <input readonly value="" bid="421" placeholder="Depart" browsergym_set_of_marks="1" class="custom-datepicker-input" browsergym_visibility_ratio="1"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 519, in step
+    execute_python_code(
+    ~~~~~~~~~~~~~~~~~~~^
+        code_to_execute,
+        ^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        report_infeasible_instructions=report_infeasible_instructions,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/action/base.py", line 59, in execute_python_code
+    exec(code, globals)
+    ~~~~^^^^^^^^^^^^^^^
+  File "<string>", line 541, in <module>
+  File "<string>", line 332, in fill
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/sync_api/_generated.py", line 15917, in clear
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.clear(
+        ^^^^^^^^^^^^^^^^^^^^^
+            timeout=timeout, noWaitAfter=no_wait_after, force=force
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        )
+        ^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_locator.py", line 221, in clear
+    await self._frame._fill(self._selector, value="", title="Clear", **params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_frame.py", line 602, in _fill
+    await self._channel.send("fill", self._timeout, locals_to_params(locals()))
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/playwright/_impl/_connection.py", line 558, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.clear: Timeout 5000ms exceeded.
+Call log:
+  - waiting for get_by_test_id("421")
+    - locator resolved to <input readonly value="" bid="421" placeholder="Depart" browsergym_set_of_marks="1" class="custom-datepicker-input" browsergym_visibility_ratio="1"/>
+    - fill("")
+  - attempting fill action
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and editable
+      - element is not editable
+    - retrying fill action
+      - waiting 100ms
+    10 × waiting for element to be visible, enabled and editable
+       - element is not editable
+     - retrying fill action
+       - waiting 500ms
+
+2025-09-24 15:14:29,492 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:29,492 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:29,500 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) Looking at the error message from my last action, I can see:
+   - The date input field is readonly
+   - I cannot directly fill it using the fill() action
+   - This suggests it's probably a date picker component
+
+2) Looking at the accessibility tree:
+   - I see an image icon next to the date field (bid "424")
+   - This is likely a calendar picker button that opens the date selection dialog
+
+3) The best approach would be:
+   - Click on either the date field or the calendar icon to open the date picker
+   - Then select December 4th from the calendar interface
+
+4) Since the input is readonly, clicking the field itself (bid "421") should open the date picker
+
+```click("421")```
+
+This should open up the calendar interface, after which I can select December 4th.
+
+2025-09-24 15:14:29,508 - agisdk.REAL.browsergym.core.env - ERROR - Error during action execution attempt: ValueError: Received a multi-action, only single-actions are allowed.
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/env.py", line 517, in step
+    code_to_execute = self.action_mapping(action)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/core/action/highlevel.py", line 329, in to_python_code
+    raise ValueError("Received a multi-action, only single-actions are allowed.")
+ValueError: Received a multi-action, only single-actions are allowed.
+2025-09-24 15:14:34,065 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:34,074 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:34,091 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about this step by step:
+
+1) I received an error from my previous attempt because I wrote out my reasoning within the code block. The code block should only contain the single action.
+
+2) Currently we need to:
+   - Click on the date field to open the date picker
+   - The date field has bid "421"
+
+3) Based on the accessibility tree, clicking on bid "421" should open the calendar interface.
+
+```click("421")```
+
+2025-09-24 15:14:43,319 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:43,321 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:43,339 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I've clicked on the date field which should have opened the calendar interface
+
+2) Looking at the accessibility tree:
+   - I see a month/year selection with comboboxes for both
+   - I need to navigate to December 2023
+   - Currently showing September 2025 in the calendar
+   - There's a combobox for month selection with bid "443"
+
+3) First, I need to:
+   - Change the month to December using the month dropdown
+   - Then change the year to 2023
+   - Then select the 4th day
+
+4) Let's start by selecting December from the month dropdown:
+
+```select_option("443", "December")```
+
+After this, I'll proceed to change the year to 2023 and then select December 4th.
+
+2025-09-24 15:14:51,808 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:14:51,810 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:14:51,821 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I've successfully opened the date picker and set the month to December
+
+2) Looking at the accessibility tree:
+   - I see a year combobox with bid "457" currently set to 2025
+   - We need to change this to 2023
+   - From the options list (MenuListPopup), I can see "2023" is available (bid "459")
+
+3) I should change the year to 2023 using the select_option action:
+
+```select_option("457", "2023")```
+
+After this, I'll be able to select December 4th from the calendar view, and then proceed to click the "Find flights" button.
+
+2025-09-24 15:15:00,146 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2025-09-24 15:15:00,148 - agisdk.REAL.demo_agent.basic_agent - INFO - Response content types: ['text']
+2025-09-24 15:15:00,163 - agisdk.REAL.browsergym.experiments.loop - INFO - action:
+Let me think about the next step:
+
+1) I've successfully:
+   - Set Dallas/Fort Worth as origin
+   - Set Fresno as destination
+   - Opened the date picker
+   - Selected December 2023 in the calendar
+
+2) Looking at the accessibility tree:
+   - I can see a list of date options in the calendar
+   - December 4th appears as an option with text "Choose Monday, December 4th, 2023" (bid "645")
+   - This is exactly the date we need
+
+3) Next action:
+   - I should click on December 4th to select it
+   - Then I can proceed to click the "Find flights" button
+
+```click("645")```
+
+This will select December 4th as our departure date. After this completes, I'll click the "Find flights" button to search for available flights.
+
+2025-09-24 15:15:05,048 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2025-09-24 15:15:05,049 - agisdk.REAL.browsergym.experiments.loop - WARNING - Exception uncaught by agent or environment in task webclones.fly-unified-7.
+BadRequestError:
+Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CTTznNfxMAk3eEvVfeCsF'}
+Traceback (most recent call last):
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 252, in run
+    action = step_info.from_action(agent)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/browsergym/experiments/loop.py", line 417, in from_action
+    self.action, self.agent_info = agent.get_action(self.obs.copy())
+                                   ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 563, in get_action
+    action = self.query_model(system_msgs, user_msgs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/src/agisdk/REAL/demo_agent/basic_agent.py", line 299, in query_model
+    response = self.client.messages.create(**create_params)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/resources/messages/messages.py", line 930, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/v1/messages",
+        ^^^^^^^^^^^^^^^
+    ...<26 lines>...
+        stream_cls=Stream[RawMessageStreamEvent],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1324, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/avikalpkarrahe/Desktop/MacAirAvi/UCD 24-25/JS'25/NonSense/AGI2/agisdk/venv_real/lib/python3.13/site-packages/anthropic/_base_client.py", line 1112, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.BadRequestError: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CTTznNfxMAk3eEvVfeCsF'}
+

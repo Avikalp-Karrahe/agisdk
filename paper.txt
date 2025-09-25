@@ -1,0 +1,936 @@
+arXiv:2504.11543v2 [cs.AI] 17 Apr 2025
+REAL: Benchmarking Autonomous Agents on
+Deterministic Simulations of Real Websites
+Divyansh Garg
+*
+†
+1
+, Shaun VanWeelden
+*
+4
+, Diego Caples
+1
+, Andis Draguns
+5
+, Nikil Ravi
+2
+, Pranav Putta
+6
+, Naman
+Garg
+1
+, Tomas Abraham
+7
+, Michael Lara
+7
+, Federico Lopez
+7
+, James Liu
+1
+, Atharva Gundawar
+1
+, Prannay Hebbar
+1
+,
+Youngchul Joo
+1
+, Jindong Gu
+3
+, Charles London
+3
+, Christian Schroeder de Witt
+3
+and Sumeet Motwani
+†
+3
+1The AGI Company,
+2Stanford University,
+3University of Oxford,
+4Mercor,
+5Contramont Research,
+6Plato,
+7
+Independent
+We introduce REAL, a benchmark and framework for multi-turn agent evaluations on deterministic simulations
+of real-world websites. REAL comprises high
+-fidelity, publicly hosted, deterministic replicas of 11 widelyused websites across domains such as e-commerce, travel, communication, and professional networking. We
+also release a benchmark consisting of 112 practical tasks that mirror everyday complex user interactions
+requiring both accurate information retrieval and state-changing actions. All interactions occur within this fully
+controlled setting, eliminating safety risks and enabling robust, reproducible evaluation of agent capability
+and reliability. REAL environments are highly configurable, offer complete action/observation space control,
+and allow researchers to inspect state-changes at any step to define reward signals for training. Our novel
+evaluation framework combines programmatic checks of website state for action-based tasks with rubric-guided
+LLM-based judgments for information retrieval. The framework supports both open-source and proprietary
+agent systems through a flexible evaluation harness that allows research labs to test agentic systems without
+modification. Our empirical results show that frontier language models achieve at most a 41% success rate on
+REAL, highlighting critical gaps in current autonomous capabilities. REAL enables easy integration of new tasks,
+reproducible evaluation, and scalable data generation for post-training web agents. The websites, framework,
+and leaderboard are available at https://realevals.xyz and https://github.com/agi-inc/agisdk
+.
+1. Introduction
+Large Language Models have demonstrated remarkable advances in reasoning capabilities, suggesting
+a promising path toward human-level performance across domains (Kaplan et al.
+, 2020
+; Bommasani
+et al.
+, 2022). Agents leveraging these models promise to automate countless routine digital tasks
+with substantial economic impact (Brynjolfsson et al.
+, 2025), yet consistently struggle with reliably
+executing multi-turn web interactions that most humans complete effortlessly (Xu et al.
+, 2024).
+Real-world deployment has been slow despite general capability improvements, and can be attributed
+to the lack of adequate real-world web based training and evaluation environments. This gap not
+only impedes research progress, but also delays the usefulness of reliably functioning web-agents.
+Current benchmarks for evaluating web agents face several fundamental limitations. First, real
+websites lack determinism, with constantly changing underlying data and content along with evolving
+UX workflows, making reproducible evaluation nearly impossible. Second, production websites cannot
+be configured to test critical edge cases that agents must handle, such as out-of-stock items, network
+latency variations, or error recovery scenarios (Chezelles et al.
+, 2025). Third, agents may change the
+state of the website themselves (via payments and state-changes), raising concerns of safety, costs,
+and robustness during evaluation. Prior works (Yao et al.
+, 2023a
+; Zhou et al.
+, 2024) have made
+valuable progress but introduce artificial constraints such as constrained action/observation spaces
+or simplified tasks and interfaces that may not reflect real-world complexity (Yehudai et al.
+, 2025).
+Moreover, these benchmarks are challenging to use as training environments due to the difficulty of
+defining clear reward signals or observing state-diffs after actions. Lastly, modern websites built with
+React feature increasingly dynamic and complex structures, making it impractical for web agents to *Equal contribution. †Corresponding authors: div@theagi.company, sumeet.motwani@eng.ox.ac.uk. Support: real@theagi.company
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+at
+ot ot+1
+LLM Judge + Rubric (on text output)
+State Diff Check (ΔlocalStorage)
+Reward Module
+Agent
+11 Deterministic, high-fidelity
+Environments
+rT
+Book a stay at the last place I stayed in London
+with 4.5+ stars for 12th to 14th December and
+message the landlord about the booking, reminding
+them of my previous stay
+100+ Tasks and Criteria
+Completion signal
+Figure 1: The REAL benchmark and framework. REAL provides 11 realistic, deterministic, highfidelity web environments (across e-commerce, networking, communication, scheduling, booking,
+project management) and 110+ evaluation tasks. An agent interacting with the environments receives
+an observation (𝑜𝑡) and executes actions (𝑎𝑡) to complete a task. Upon completion, an outcome
+reward (𝑟𝑇 ) is evaluated via programmatic state verification and/or a rubric based LLM-judge.
+rely on simple HTML extraction methods part of prior benchmarks. These limitations have created a
+systemic gap between benchmarks and the true challenges of autonomous reliable web navigation.
+To address these limitations, we present REAL, a benchmark and evaluation framework designed to
+test web agents on high-fidelity, deterministic replicas of popular websites. Our approach makes several
+key advances. First, inspired by WebArena (Zhou et al., 2024), we develop accurate representations
+of 11 widely-used websites (across e-commerce, travel, social media, scheduling) using modern
+web-development standards. These websites span several pages and mimic the visual and functional
+fidelity of important real-world websites. We host the sites, reducing the time, cost, and difficulty
+of self-hosting benchmarks. Second, we make these websites fully deterministic by fixing all data,
+timestamps, and UX elements while maintaining configurability through URL parameters. This
+approach allows testing various edge cases (latency, errors, accessibility features) in a reproducible
+manner while storing website state in the browser’s local storage for persistence across sessions.
+We provide a flexible test harness that accommodates both open-source and proprietary agentic
+systems without requiring adherence to a fixed action or observation space. REAL makes it easy to use
+custom agents by providing unrestricted access to the browser state. This design reflects the current
+research landscape, where approaches ranging from open APIs (Song et al., 2025) to proprietary
+(Chu et al., 2025) black-box systems work with custom observation and action spaces. In line with
+this, we do not impose explicit restrictions on the observation space, allowing users to communicate
+with the browser via Playwright1
+for simplicity or Chrome DevTools Protocol (CDP)2
+for complete
+control over the browser session.
+For evaluations, we provide practical tasks across these websites, covering both information retrieval
+and state-changing actions (Chezelles et al., 2025). The task input comprises a user request in
+natural language along with the website configuration URL to initialize the task run with. The REAL
+framework allocates a persistent CDP session to the agent, enabling low-level browser automation
+while maintaining state throughout the interaction. When an agent marks the task as complete, it
+triggers the capture of the local storage state changes and model response. For closed systems, our
+harness only requires the system to navigate to the start URL before letting the agent execute the
+1
+https://playwright.dev/
+2
+https://chromedevtools.github.io/devtools-protocol/
+2
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+task and signal completion by navigating to the final URL with any textual response encoded in the
+query string. Task performance is evaluated based on two methods: (1) deterministic programmatic
+comparison of pre-task and post-task browser local storage states for action-oriented tasks (Zhou
+et al., 2024), detecting specific key-value modifications against expected state changes; and (2) a
+structured LLM-judge for information retrieval tasks (Zhuge et al., 2024), where model responses are
+evaluated against task-specific rubrics with predefined criteria for correctness and completeness.
+We evaluate frontier models with a default agent that we provide as part of REAL. Our current
+evaluations indicate that no model achieves more than 41.07% performance on our tasks, with Claude
+3.7-Sonnet Thinking, Gemini 2.5 Pro Experimental, and OpenAI-o3, and GPT-4o achieving 41.07%,
+38.39%, 34.82%, and 14.29% respectively. In this paper, we provide a detailed description of agentic
+systems and existing benchmarks (Section 2), websites developed for REAL (Section 3), how agents
+can use these environments (Sections 4 and 6), our task design and evaluation methodology (Section
+5), baseline experimental results (Section 8), and implications for future research (Sec. 9).
+To summarize, our key contributions include: (1) a collection of 11 deterministic, configurable,
+high-fidelity simulated web-environments; (2) a flexible evaluation framework supporting both
+open and proprietary agent systems; (3) a comprehensive set of 112 real-world challenges; (4) a
+robust evaluation method for each task along with reward signals that could be used for training
+or synthetic trajectory generation; and (5) an open leaderboard with hosted environments, making
+agentic evaluations accessible to academia and industry. REAL represents a significant step toward
+the development and evaluation of highly-capable and reliable real-world web agents.
+2. Motivation and Related Work
+2.1. Benchmarks for Web Agents
+Recent advances in large language models (LLMs) have led to growing interest in web agent benchmarks that evaluate an agent’s ability to interact with browser-based environments. Early benchmarks
+such as MiniWoB (Shi et al., 2017) and MiniWoB++ (Liu et al., 2018) established foundational workflows and metrics for evaluating web agents in controlled, reproducible environments. WebShop (Yao
+et al., 2023a) evaluated agents on their ability to navigate complex e-commerce flows by simulating a
+single online store. Mind2Web (Deng et al., 2023) built on this work, releasing a dataset of more than
+2000 open-ended tasks. These benchmarks offer the ability to evaluate agents on pre-defined, offline
+datasets. Various works have also proposed suits of simulated web environments, for e.g. WebArena
+(Zhou et al., 2024) and VisualWebArena (Koh et al., 2024a). WebArena struggles with realism and
+task utility, where certain tasks involve artificially constrained ambigious goals or actions that do
+not reflect everyday web usage (Kapoor et al., 2024). Moreover, the benchmark requires dedicated
+hosting infrastructure and overhead, and the environments can be "gamed" (Sodhi et al., 2024) by
+exploiting shortcuts unavailable in real scenarios.
+In addition to benchmarks focusing on everyday tasks, there has also been work focusing on
+specific use-cases and different dimensions of evaluation. WorkArena (Drouin et al., 2024) and
+WorkArena++ (Boisvert et al., 2024) introduced benchmarks for web agents in the enterprise software setting. AgentBench (Liu et al., 2023) is broader in that it includes multiple interactive agentic
+environments (web browsing, code, gaming, etc.), with the goal of providing insights into more
+general agent capabilities of LLMs. ST-WebAgentBench (Levy et al., 2024) focused on safety and
+trustworthiness of web agents, and on assessing web agents’ compliance with organizational policies
+and safety requirements in enterprise settings.
+BrowserGym (Chezelles et al., 2025) offers a unified interface for evaluating agents across multiple
+3
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+existing benchmarks through a standardized observation and action space. BrowserGym’s interface
+forms the foundation for our REAL implementation, which extends its capabilities to address gaps in
+prior benchmarks (simplified HTML website structures, lack of configurability of environments, tasks
+that do not fully reflect real-world use-cases, and reproducibility (Kapoor et al., 2024)).
+Beyond these specialized benchmarks, efforts to create real-time or live evaluation settings face reproducibility challenges (McIntosh et al., 2024). Live websites may change over time, break existing agent
+behaviors, or introduce unpredictable failures. Conversely, purely synthetic environments—while
+reproducible—often fail to mirror the complexity and utility of real websites, leading to overfitting
+and benchmarks that are “solved” but do not generalize (Li and Waldo, 2024). Consequently, there is
+an unmet need for deterministic, high-fidelity, and readily accessible web benchmarks that support
+multiple configurations, capture genuine real-world tasks, and act as a testbed for RL research on
+agentic systems, inspired by foundational work in Brockman et al. (2016).
+2.2. Web Agents and Post-training
+A large portion of modern work and everyday tasks is conducted via web-based tools: filling forms,
+booking food or transport, updating dashboards, retrieving records, ordering items from online
+shopping sites, or navigating internal portals. Automating even a fraction of these workflows would
+result in massive economic productivity (Brynjolfsson et al., 2025; Bommasani et al., 2022). Web
+agents can be customized and made available 24/7; they can also adapt to different kinds of content,
+making it possible to automate the long tail of web-based tasks that are too cumbersome for humans
+but too complex for purely software-based automation.
+Thus, a new wave of web agents built on top of foundation models has emerged with the development
+of benchmarks and frameworks described in Section 2.1. LLM reasoning and planning capabilities in
+these domains (Yao et al., 2023b; Zhang et al., 2024a) have led to the deployment of a number of
+promising agents. AgentQ (Putta et al., 2024) leverages guided Monte Carlo Tree Search combined
+with self-critique and iterative post-training to boost multi-step reasoning in complex web navigation
+tasks. OpenAI’s Operator3 and Anthropic’s Computer-Use4 employ the companies’ respective models
+to be able to execute simple browser tasks such as ticket booking and form-filling by simulating mouse
+and keyboard inputs. AgentOccam (Yang et al., 2024) improves web task performance by aligning its
+action and observation spaces with pre-training data.
+Several other works along these lines attempt to use exploration and planning to boost performance;
+WebPilot (Zhang et al., 2024b) enhances dynamic web interactions via exploration through a dualoptimized MCTS strategy, and Tree Search for Language Model Agents (Koh et al., 2024b) applies an
+inference-time best-first search for effective multi-step planning with a value function. Complementing
+these, WebDreamer (Gu et al., 2025) simulates action outcomes to enable speculative planning,
+collectively demonstrating the improving web-based capabilities of LLM driven agentic systems.
+Nevertheless, current agents are still restricted to narrow tasks and have limited error recovery
+mechanisms, relying on brittle prompts and struggling with complex workflows (Yehudai et al., 2025).
+A key reason is the lack of robust training and evaluation environments, which we address in our
+current work. Ensuring safe, accurate, and efficient navigation is critical in web environments (Anwar
+et al., 2024; Xu et al., 2024), and existing benchmarks sidestep complex UI elements, meaningful
+environments, realistic tasks, or user input, highlighting the need for a benchmark that can test agents
+under realistic conditions while ensuring reproducibility.
+An emerging paradigm in training foundation models is to post-train them via reinforcement learning
+3
+https://cdn.openai.com/operator_system_card.pdf
+4
+https://www.anthropic.com/news/3-5-models-and-computer-use
+4
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+to perform reasoning. Recent releases leveraging test-time compute and reasoning abilities include
+models such as OpenAI’s o1 (OpenAI et al., 2024) and DeepSeek-R1 (DeepSeek-AI et al., 2025).
+Given the promise of scaling reinforcement-learning in agentic settings, it is increasingly important to
+have suitable environments to train RL-based agents. REAL generates trajectories and well-defined
+reward signals for training agents via reinforcement learning.
+3. REAL Websites
+REAL consists of 11 high-fidelity realistic website implementations that accurately replicate the
+functionality and user interfaces of widely-used consumer platforms. We highlight the selection and
+development process along with several important advantages of our website environments below.
+Staynb (Airbnb) Ziloft (Zillow) UDriver (Uber) Omnizon (Amazon)
+GoMail (Gmail) DashDish (Doordash) NetworkIn (LinkedIn) TopWork (UpWork)
+Figure 2: Screenshots of representative web environments included in REAL (8 of 11 shown). These
+are high-fidelity, deterministic replicas of popular websites, hosted by us for easy accessibility. These
+environments feature complex, multi-page workflows with persistent state management on the
+browser, allowing detailed tracking and inspection of state changes induced by agent actions.
+3.1. Website Selection
+Our website selection process focused on a diverse set of consumer-facing applications that drive
+significant web traffic and economic activity (Yee et al., 2024; Chui et al., 2023; Handa et al.,
+2025). We identified websites requiring varied interaction capabilities: form completion, reliable
+online payments, multi-step workflows, dropdown menus, map interfaces, data filtering, information
+retrieval, and state-dependent elements. The final collection, presented in Table 1, spans key domains
+including e-commerce, travel, communication, scheduling, freelance marketplaces, property search,
+etc. This ensures that agents must reliably and accurately handle a representative range of web
+interactions encountered in everyday tasks—from selecting seats on airline maps to scheduling events
+and managing payment information—providing comprehensive coverage that allows a systematic
+evaluation of web agents on important real-world tasks.
+3.2. Website Tech Stack
+REAL website environments are implemented using a modern front-end stack centered on React
+and Next.js. To ensure consistency across environments, each Next.js project utilizes TypeScript
+and uses the "app" router configuration. User interface components are derived from the Material
+5
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Name Insp ired By REAL URL Core Funct ional ity
+Staynb Airbnb evals-staynb Search, filter, book, and review vacation rentals;
+manage bookings.
+Omnizon Amazon evals-omnizon Browse/search products, manage shopping cart,
+complete online purchase checkout.
+DashDish Doordash evals-dashdish Browse restaurants, customize menu selections,
+place and manage food delivery orders.
+GoCalendar GCal evals-gocalendar Manage calendar views, schedule events, create
+and modify appointments.
+GoMail Gmail evals-gomail Manage inbox (read, label, delete), compose/send
+emails, handle attachments.
+OpenDining OpenTable evals-opendining Search restaurant availability by criteria (time,
+party size), make/manage table reservations.
+NetworkIn LinkedIn evals-networkin Manage user profile, search for professional connections, view profiles and posts.
+UDriver Uber evals-udriver Plan trips (set locations), request rides based on
+service type, view route and fare estimates.
+FlyUnified United evals-fly-unified Search for flights (origin, destination, dates), select
+seats, book tickets, manage itineraries.
+TopWork UpWork evals-topwork Post jobs (client), search/apply for projects (freelancer), manage proposals and active contracts.
+Zilloft Zillow evals-zilloft Search/filter property listings, save favorites, contact managers, view property details and photos.
+Table 1: REAL Website Replicas: High-fidelity, deterministic clones of popular websites built with
+modern web frameworks (React, Next.js) for reproducible evaluation of autonomous web agents.
+UI React library. Critically, all websites are publicly deployed via Vercel, ensuring unrestricted
+internet accessibility without authentication. This public hosting approach eliminates the setup
+complexities often associated with prior benchmarks requiring local deployment (e.g., via Docker)
+(Koh et al., 2024a; Zhou et al., 2024; Xu et al., 2024), thereby lowering the barrier for adoption
+and facilitating wider research community access. This accessibility setup we provide also reflects
+the likely operational environment for commercial AI systems designed to interact with public web
+resources (Chu et al., 2025; Hu et al., 2024; Marreed et al., 2025; Wu et al., 2023).
+3.3. Determinism
+To ensure reproducible evaluations, in line with (Zhou et al., 2024; Chezelles et al., 2025), the
+websites were designed to be fully deterministic through several key features:
+1. Static Data: All potentially variable information, such as product prices, availability statuses, and
+displayed messages, is fixed. This eliminates variability between task executions. AI-generated
+synthetic data was utilized where appropriate to maintain realism.
+2. Predefined Temporal Settings: Time-dependent elements, including date selectors and time
+zones, are locked to guarantee consistency across all task runs.
+3. Replayability: As a result, identical task conditions can be reliably recreated, facilitating systematic performance comparisons across different AI systems and experimental configurations.
+6
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+3.4. Website Authentication and Browser Management
+To streamline agent interaction, the websites operate in a pre-authenticated state, bypassing standard
+login procedures and allowing agents immediate access to task-specific functionalities. Similar to
+(Zhou et al., 2024), common anti-automation mechanisms, such as CAPTCHAs or bot detection
+systems, have been intentionally removed from these environments. Furthermore, website state
+persists across interactions using the browser’s localStorage. This allows for data continuity through
+page navigation, refreshes, and multi-tab usage, which is similar to realistic user session behavior
+and enables agents to properly manage stateful tasks (Putta et al., 2024). Local sessions can be easily
+cleared by simply navigating to /clear, making REAL environments very convenient to use.
+4. REAL Framework and Environments
+We model agent interaction within REAL environments as a Partially Observable Markov Decision
+Process (POMDP). The underlying environment state 𝑠𝑡 ∈ 𝑆 encompasses the complete browser
+state at timestep 𝑡. State transitions 𝑇 : 𝑆 × 𝐴 → 𝑆 are deterministic, governed by the browser
+engine executing the website’s code in response to agent actions 𝑎𝑡 ∈ 𝐴. REAL allows agents to
+interact in two primary ways, allowing users to define the action space 𝐴 and the observation function
+𝑂(𝑠𝑡) → 𝑜𝑡 accordingly. First, inspired by (Yao et al., 2023a; Zhou et al., 2024; Chezelles et al.,
+2025), high-level interactions use Playwright, which involves an action space 𝐴 typically comprising
+user-level commands (see Section 4.2) and an observation space 𝑂 (screenshots, full DOM, or the
+accessibility tree) which can be configured and is explained in Section 4.1. For lower-level control,
+we also provide an option for direct access to a Chrome DevTools Protocol (CDP) session, which
+enables a near-unrestricted action space 𝐴 consisting of any valid CDP command and allows for a
+richer observation space 𝑂 consisting of the entire live browser session state.
+At each step 𝑡, the agent receives observation 𝑜𝑡 ∈ 𝑂, selects action 𝑎𝑡 conditioned on the task 𝑖 and
+potentially the history (𝑜
+𝑡
+1
+, 𝑎𝑡−1
+1
+), leading deterministically to the next state 𝑠𝑡+1 and observation 𝑜𝑡+1.
+Task success (𝑟 = 1) or failure (𝑟 = 0) is determined by an outcome reward function 𝑟, evaluated
+only at the final timestep 𝑇. In Section 6, we describe the agent harness and evaluation flow.
+4.1. Observation Space
+REAL offers configurable observation spaces 𝑂(𝑠𝑡) → 𝑜𝑡 which can be specified based on an agent’s
+chosen interaction modality (high-level Playwright or low-level CDP).
+For agents interacting via the high-level Playwright interface, we provide default agents that can
+be configured to use an observation space 𝑂 including one or more of the following components:
+Screenshots, visual renderings of the current web page; Full DOM, the complete Document Object
+Model structure of the page; Accessibility Tree, a representation of the page structure based on
+accessibility APIs, providing semantic information about elements. This is broadly consistent with
+other web benchmarks and high-level actions existing agents use to operate (Chu et al., 2025; Putta
+et al., 2024; Koh et al., 2024b; Yang et al., 2024). Alternatively, REAL provides the agent with direct
+access to the Playwright Browser object itself, allowing the use of information derivable through the
+Playwright API as its observation space.5
+For agents requiring fine-grained control through the low-level Chrome DevTools Protocol (CDP), the
+observation space encompasses the entire live browser session state accessible via the CDP connection.
+This provides maximum flexibility, allowing the agent to observe any aspect available as part of the
+5
+https://playwright.dev/docs/api/class-browser
+7
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+browser’s current session.6 This flexibility enables researchers to adapt the observation space to the
+specific input requirements and capabilities of custom agent architectures or scaffolds.
+4.2. Tasks and Action Space
+Agents interact with the environment by selecting actions 𝑎𝑡 from an action space 𝐴 to accomplish
+evaluation tasks detailed in Section 5. Our goal is to keep the definition of 𝐴 highly flexible (Zhang
+et al., 2024b) and dependent on the chosen interaction setup.
+When using the Playwright interface, the action space 𝐴 consists of high-level commands simulating
+standard user inputs. This includes but is not limited to operations such as text input, manipulation
+of checkboxes, mouse clicks, keyboard commands and shortcuts, file uploads, focus elements, drag
+and drop, and scrolling.7 This allows agents designed around user-level actions to operate naturally
+within REAL environments, though 𝐴 is not strictly limited to these examples.
+Agents interfacing with environments via CDP (Chezelles et al. (2025); Drouin et al. (2024) also
+incorporate rich observation spaces with CDP) have access to a substantially broader action space.
+This low-level control permits a wide range of interactions directly within the browser environment.
+For instance, agents can execute commands for direct Document Object Model (DOM) modification,
+arbitrary JavaScript execution within the page’s context, performance profiling, emulation of different
+devices or network conditions, interception and modification of network requests, and even detailed
+browser session debugging using tools like breakpoints.
+4.3. Rewards
+Our framework primarily uses an outcome reward function 𝑟 ∈ {0, 1} to evaluate task success upon
+completion (at timestep 𝑇). This binary outcome reward indicates whether the agent successfully
+achieved the specified task goal 𝑖 and is determined as follows (see Section 5 for details on Action-based
+and Information Retrieval tasks, similar to Zhou et al. (2024)):
+• Action-based Tasks (𝑟𝐴): Rewards are determined by programmatic verification function 𝑓𝑒𝑣𝑎𝑙,
+which compares the difference between the initial (𝑠0) and final (𝑠𝑇 ) ‘localStorage‘ states
+against a set of predefined key-value assertions specific to the task goal 𝑖. 𝑟𝐴 = 1 if and only if
+all assertions pass with an exact match.
+• Information Retrieval Tasks (𝑟𝑅): Rewards are determined by an LLM-judge evaluation
+function 𝑔𝑒𝑣𝑎𝑙, which assesses the agent’s final submitted text response against a pre-determined
+task-specific rubric. 𝑟𝑅 = 1 if the response is judged as correct according to the rubric.
+• Combined Tasks: Require both 𝑟𝐴 = 1 and 𝑟𝑅 = 1 for the overall task reward 𝑟 to be 1.
+We note that while the current version of REAL provides binary outcome rewards, the underlying
+framework components (deterministic environment, state tracking via ‘localStorage‘, programmatic
+checks) are flexible enough to support the definition and use of dense, step-wise reward functions for
+reinforcement learning (Lightman et al., 2023; Putta et al., 2024).
+4.4. Evaluation Functions
+REAL offers several endpoints for evaluations, debugging, and environment configurations:
+6
+https://chromedevtools.github.io/devtools-protocol/
+7
+https://playwright.dev/docs/input
+8
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+• /config: Used to initialize the environment for a specific task run. Appending query parameters
+to this endpoint allows setting both universal and website-specific configurations (detailed
+in Section 7), such as simulated latency, error mode flags (e.g., error_finding_driver),
+accessibility settings (hide_aria_labels), and run identifiers (run_id, task_id).
+• /submit: The agent must navigate to /submit to signal task completion for leaderboard submissions. This action captures the final localStorage state and the agent’s textual response. This
+captured data is then used by the evaluation harness to compute the reward 𝑟 and record the
+result on the public leaderboard associated with the provided run_id.
+• /finish: Whenever the website state changes, those changes are saved in the website localStorage
+state. Navigating to /finish at any point displays the difference between the initial state and
+current state, allowing users to inspect the precise state changes.
+• /clear: Navigating to /clear resets the website’s localStorage to its default empty state.
+5. Evaluation Tasks
+REAL consists of a suite of 112 evaluation tasks across 11 website environments. These tasks are
+designed to assess performance on realistic, multi-turn interactions that mirror common user goals
+and workflows encountered on the internet. These tasks go beyond simple, atomic actions and are
+assigned difficulty levels (easy, medium, and hard), providing a relative indication of factors such
+as amount of planning required, number of interaction steps, constraints, or the required reasoning
+depth. These tasks involve both information seeking and state manipulation within the environments,
+employed early on by Yao et al. (2023a); Zhou et al. (2024); Koh et al. (2024a); Yoran et al. (2024);
+?. Each task is based on a natural language instruction (the ‘goal’) provided to the agent, potentially
+accompanied by specific environment configurations set via the ‘/config’ endpoint (as described in
+Section 7). We categorize tasks as follows.
+5.1. Information Retrieval Tasks
+Information Retrieval tasks require the agent to navigate an environment, locate specific pieces of
+information, potentially merge findings from multiple locations, and report the result (Deng et al.,
+2023; Zhou et al., 2024). The goals range in complexity from simple lookups on a single page (e.g.,
+identifying the first few items listed, finding a specific flight time) to more complex queries requiring
+navigation across pages or filtering based on constraints (e.g., finding the number of restaurants
+matching a specific category, summarizing event counts across different calendars for a given month).
+Evaluation for only retrieval tasks is based on the final text response generated by the agent upon task
+completion (submitted via the ‘/submit’ endpoint). An LLM judge (Zheng et al., 2023) evaluates the
+agent’s response against a predefined task-specific ‘rubric‘ to determine if the retrieved information is
+accurate and complete according to the ground truth present in the environments.
+5.2. Action-based Tasks
+Action-based tasks require an agent to perform actions that modify the environment’s state. These
+tasks represent common goal-oriented web usage, such as booking a flight or ride, scheduling calendar
+events, filling out forms with specific details, professional networking, etc. These tasks often require
+interpreting complex instructions involving multiple constraints (e.g., specific dates, times, locations,
+passenger numbers, item types, payment details) (Yao et al., 2023a).
+The evaluation of action-based tasks relies on programmatic verification of the final website stage,
+captured via the browser’s ‘localStorage’ when the agent navigates to ‘/submit’. We use ‘state-check’
+9
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+mechanisms to inspect the difference between the initial and final ‘localStorage‘ state (Zhou et al.,
+2024). A task is considered complete only if all specified state conditions are met. This provides an
+objective and deterministic measure of the agent’s ability to effect precise state changes.
+5.3. Combined Tasks and Additional Details
+Several tasks within REAL combine elements of both retrieval and action (identified as ‘challengeType:
+retrieval-action’). For instance, an agent might be asked to find the price of an item, add it to the cart,
+complete the purchase, and then report the final cost. Furthermore, similar to Zhou et al. (2024), we
+specifically include tasks designed to be impossible under the given deterministic conditions (‘possible:
+false’), such as attempting to book a flight that doesn’t exist or using deliberately invalid payment
+information. These tasks allow us to evaluate an agent’s ability to recognize failure conditions,
+potentially utilize error recovery strategies (if applicable), and accurately report the inability to
+complete the requested goal, rather than hallucinating success or failing silently (Li and Waldo, 2024;
+Renze and Guven, 2024; Kara et al., 2025). Combined, our evaluations test important aspects of
+agent performance and reliability in real-world scenarios.
+6. Agent Harness
+The REAL Agent Harness provides a standardized interface for evaluating varied agent implementations (Yao et al., 2023b; Chu et al., 2025; Putta et al., 2024; Shinn et al., 2023; Koh et al., 2024b; Yang
+et al., 2024) with minimal required modification. Our goal is to prioritize simplicity and compatibility,
+enabling researchers to evaluate agents across multiple interaction paradigms while maintaining
+their existing agent architectures. This approach reduces the technical overhead associated with
+benchmarking, promoting broader adoption and research across academia and industry.
+6.1. Technical Architecture
+The harness offers three integration settings to accommodate different types of agent architectures
+(Acharya et al., 2025). As discussed in Section 4, direct Playwright integration grants the user access
+to a Playwright Browser instance, which enables high-level control of BrowserContext and Page
+objects for standard web interaction primitives (navigation, element interaction, DOM inspection).
+For agents requiring lower-level control, the harness provides a WebSocket endpoint for the Chrome
+DevTools Protocol (CDP), which allows direct execution of CDP commands across domains like DOM,
+Runtime, Network, and Input for fine-grained state manipulation. Third, for agents employing blackbox systems, our harness supports integration via URL endpoints that expose the browser instance,
+allowing external controllers to attach and manage the session.
+6.2. Evaluation Flow
+A task is initialized when the harness receives a task definition, including a natural language goal (𝑖)
+and a configuration URL. The harness launches and manages a dedicated browser instance, navigating
+it to the specified /config endpoint (Section 4.4). Subsequently, control is passed to the agent via its
+selected integration setting and the agent then enters an iterative loop, receiving observations 𝑜𝑡 and
+executing actions 𝑎𝑡 which get translated to corresponding API calls (e.g., page.click(), page.evaluate(),
+or Input.dispatchKeyEvent via CDP). This interaction cycle continues until the agent attempts to fulfill
+the task goal 𝑖, potentially constrained by a maximum step limit. Task completion is signaled by the
+agent navigating to the designated /submit endpoint or just returning an output/ending the loop
+(for local client-side evaluation). The harness intercepts this final step, and captures two primary
+10
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+details: the final localStorage state and any agent generated text response (optional), passed via the
+URL query string. These are then programmatically passed to the task-specific evaluation (outcome
+reward) functions we describe in Section 5.
+6.3. Submissions and Leaderboard API
+Our evaluation framework operates in two modes. A local evaluation returns results directly, allowing
+quick iterative development and debugging. Researchers can also use the /finish endpoint during
+these runs to inspect the intermediate localStorage state-diff without concluding the evaluation.
+Alternatively, navigating to /submit with the correct id can be used for a formal leaderboard submission
+attempt. This initiates a full evaluation for potential inclusion in public rankings, subject to manual
+verification. This supports both private research and verified public benchmarking, similar to Zhou
+et al. (2024); Yoran et al. (2024); Drouin et al. (2024); Wang et al. (2025).
+6.4. Integration of Custom Agents
+The REAL harness is designed as an adapter layer to minimize the effort required to integrate custom
+agents. Researchers can connect their existing systems, including those with proprietary reasoning or
+planning modules, by implementing the interaction logic against just one of the provided interfaces
+(Playwright API, CDP command execution, or external control via URL access). This significantly
+reduces the need for agent-side architectural modifications, lowering the barrier to participation for
+academic and commercial teams while enabling standardized benchmarking.
+7. Configurable Environments
+REAL incorporates a configuration framework that enables precise control over testing conditions,
+significantly improving its utility for rigorous agent evaluations. Addressing limitations of static
+environments found in prior benchmarks (Yao et al., 2023a; Zhou et al., 2024; Liu et al., 2023)
+and the non-reproducibility of live websites (Kapoor et al., 2024), REAL implements a two-level
+configuration system—universal and website-specific. This structure supports systematic evaluations
+to develop reliable agents (Chezelles et al., 2025; Drouin et al., 2024), while maintaining the
+determinism crucial for reproducible results. Configurations are applied for each task run via standard
+query string parameters appended to a dedicated /config endpoint on each website.
+Universal configurations apply globally across all websites within the benchmark, and are used to
+establish consistent baseline conditions. Parameters at this level include settings such as simulated
+network latency (default 2000ms), the hide_aria_labels flag (default false) to control the presence
+of ARIA attributes for accessibility testing, and identifiers for experimental management (run_id,
+task_id). Configuring these parameters allows researchers to isolate and understand the effects of
+broader web/browser based factors on agent behavior across tasks and websites (Kapoor et al., 2024).
+Website-specific configurations allow granular control over the internal state, behavior, and simulated
+backend processes tailored to each individual application. This capability is essential for simulating
+specific operational scenarios, user contexts, and edge cases related to each site. Beyond initializing
+basic states, for example the total_conversations on GoMail, these parameters provide detailed
+control relevant to real-world usage (Krishnan, 2025; Xu et al., 2024). Here, we use the UDriver
+environment as an illustration of the website-specific parameters researchers can configure:
+• Introduce controlled error states into workflows to evaluate agent error detection and recovery
+capabilities (e.g., setting error_finding_driver=true or error_booking_ride=true).
+11
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+• Modify the timing or latency of operations to assess agents under different system response
+times (e.g., adjusting simulating_searching_driver_delay or simulating_booking_trip durations).
+• Modify application-specific logic parameters, such as internal pricing calculations or discount
+availability (e.g., modifying udriverx_multiplier or comfort_discount).
+• Set initial content or regional contexts via data presets (e.g., using location_preset=2 to
+initialize the environment with data relevant to New York).
+This fine-grained control enables targeted evaluations focused on how agents handle specific website
+behaviors or data conditions. Detailed configurations for each environment part of REAL are provided
+on our website8
+.
+This dual-level configuration system in REAL provides researchers an extensive amount of control
+over specific experimental variables within a deterministic framework. This allows for a systematic
+evaluation of agent reliability across several general and task/website specific modifications (Xia
+et al., 2025). The ability to precisely define, reproduce, and study such conditions allows for research
+that is often infeasible on live, dynamic websites or less flexible benchmark environments.
+8. Leaderboard
+We evaluated our baseline agent with a large set of frontier models on our REAL environments. This
+section presents the quantitative performance and discusses some important observations derived
+from analyzing agent interaction trajectories.
+qwen-2.5-vl-32b
+openai-cua
+gemma-3-27b
+llama-3.3-70b
+llama-4-maverick
+grok-3
+gpt-4o
+o1
+deepseek-v3
+o3-mini
+o3
+gemini-2.5-pro
+claude-3.7-sonnet
+Model
+0.00
+0.05
+0.10
+0.15
+0.20
+0.25
+0.30
+0.35
+0.40
+Accuracy
+0.03
+0.07
+0.10 0.11 0.12 0.12
+0.14
+0.16
+0.20
+0.25
+0.35
+0.38
+0.41
+Accuracy of Frontier Models on RealGym
+Figure 3: Performance of evaluated models on the REAL benchmark, measured by end-to-end task
+success rate of our baseline agent across 112 tasks. Claude 3.7 Sonnet-Thinking achieves 41.07%.
+The overall end-to-end task success rates across the 112 REAL tasks for various models are summarized
+in Figures 3 and 4. Performance varied considerably across tested models. The current leading model
+is Claude-3.7-Sonnet-Thinking9
+, achieving a success rate of 41.07%, followed by Gemini-2.5-Pro8
+See https://www.realevals.xyz/websites/udriver with the appropriate site name for specific configuration details.
+9
+https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf
+12
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Experimental at 38.39%. Similarly, other reasoning models also perform much better than standard
+pre-trained models, for example o3 (34.82%), o3-mini (25.00%), and o1 (16.07%)
+10. Despite this,
+there is a significant room for improvement. Open source models currently lag behind, with Llama-4-
+Maverick (12.50%) showing effectively similar performance to Llama 3.3 70B (10.71%) (Grattafiori
+et al., 2024). This suggests that increases in scale alone, at least between these specific models, did
+not translate into improved practical web navigation capabilities. Notably, DeepSeek V3 (19.64%)
+(DeepSeek-AI et al., 2025) show much better performance than Llama models. Small models lag
+significantly, with Llama-3.1-8B, Qwen-2.5-vl-32B, and Gemma-3-27B achieving only 1.79%, 2.68%,
+and 9.82% respectively, underscoring the requirement for substantial model capacity and training to
+handle the complexities of agentic performance. We also evaluated OpenAI’s Computer-Using Agent
+(CUA) model (Chu et al., 2025), recording a success rate of only 7.14%. When these trajectories were
+manually examined, we observed that CUA was frequently distracted by irrelevant details and did
+not complete the final steps of several tasks.
+Overall, our results demonstrate that reliable, autonomous navigation of websites and completion of
+tasks remains a significant challenge for current frontier models. Similar results are also observed
+across benchmarks, as studied by Chezelles et al. (2025). We do expect performance to go up with
+better agent scaffolds beyond our baseline, that integrate search and post-training similar to Putta
+et al. (2024); Koh et al. (2024b); Su et al. (2025). REAL is flexible enough to develop harder tasks on
+the same environments if agents saturate the current test-set in the short term.
+DashDish
+FlyUnified
+NetworkIn GoMail
+Omnizon
+OpenDining
+Staynb
+TopWork Udriver
+Zilloft
+0.2
+0.4
+0.6
+0.8
+Closed Models
+o3
+gemini-2.5-pro
+sonnet-3.7
+gpt-4o
+o1
+grok-3
+DashDish
+FlyUnified
+NetworkIn GoMail
+Omnizon
+OpenDining
+Staynb
+TopWork Udriver
+Zilloft
+0.2
+0.4
+0.6
+0.8
+Open Weight Models
+deepseek-v3
+llama-4-maverick
+llama-3.1-8b
+gemma-3-27b
+llama-3.3-70b
+qwen-2.5-32b
+Model Performance Across RealGym Environments (Average Score)
+Figure 4: A per-website performance breakdown for several frontier models across REAL environments.
+TopWork and FlyUnified are consistently the most challenging environments.
+8.1. Qualitative Observations
+We analyze interaction traces and outline two common failure modes contributing to low performance
+of models with the baseline agent on our benchmark.
+Inadequate Failure Recognition and State Verification Agents often fail to assess whether they
+have successfully completed all parts of the task, lending more weight to their perceived previous
+10https://cdn.openai.com/o1-system-card-20240917.pdf
+13
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+actions than the actual updated observation space. For example, within Omnizon (e-commerce),
+an agent tasked with adding two items to the cart might add the first item but then fail to add the
+second item due to clicking an incorrect button or misinterpreting the page state. Despite the cart
+only containing one item, the agent proceeds through checkout, concluding the interaction under the
+false assumption that the task was complete. Immediate state-verification against the overall goal and
+error direction thus remain challenging, as also observed in Zhou et al. (2024); Li and Waldo (2024).
+Navigation Dead Ends and Lack of Recovery Agents often struggle when encountering non-standard
+navigation flows or unexpected states, and lack the intuitions to backtrack effectively. For example, in
+the Udriver ride-booking environment, an agent might correctly initiate a booking but then click on
+an option to schedule the ride for a future time, entering a sub-menu. Once in this sub-environment,
+agents frequently fail to identify the correct UI element (e.g. a back button, cancel option, or the
+intended next step) to return to the primary task. Interpreting and understanding the purpose of UI
+elements to apply reliable exploration or backtracking strategies remains an issue, and agents enter
+loops of clicking irrelevant elements, effectively getting stuck.
+9. Discussion and Future Work
+In this work, we introduced REAL, a benchmark and framework designed to evaluate and improve the
+accuracy and reliability of autonomous web agents. By providing 11 high-fidelity, deterministic web
+environments along with 112 realistic multi-turn tasks, REAL offers important improvements over prior
+benchmarks (Yao et al., 2023a; Zhou et al., 2024; Chezelles et al., 2025). Furthermore, the flexible
+agent harness, supporting both high-level (Playwright) and low-level (CDP) interaction for open and
+proprietary systems, alongside publicly hosted environments and a leaderboard, lowers the barrier to
+entry and facilitates standardized, comparative research. Our findings on the benchmark show the
+challenges posed by realistic environments and highlights the substantial room for improvement in
+agent capabilities on consequential web tasks (Li and Waldo, 2024).
+Beyond its primary role as an evaluation benchmark, REAL is designed to serve as a valuable environment for data generation and agent post-training (Shinn et al., 2023; Putta et al., 2024; Zhou
+et al., 2025). The deterministic nature of our environments and detailed state information (especially
+precise state changes resulting from actions as well as a rich observation space via complete CDP
+session access), and well defined outcome reward functions allow for the collection of interaction
+trajectories suitable for various post-training approaches, including imitation learning (Zelikman
+et al., 2022; Chen et al., 2023) and reinforcement learning (Schulman et al., 2017; Putta et al.,
+2024; Qi et al., 2025). Researchers can readily extend the benchmark by defining new tasks with
+custom goals and evaluation metrics tailored to specific training objectives. The depth and complexity
+of our websites and tasks makes REAL particularly relevant for advancing RL techniques aimed at
+improving the reasoning and planning capabilities (Xiang et al., 2025; Jaech et al., 2024) of web
+agents. While REAL is currently limited to only outcome rewards and a small suite of evaluation
+tasks, future iterations will include a dedicated library (Brockman et al., 2016) and set of training
+tasks to streamline RL post-training workflows (Kumar et al., 2025; DeepSeek-AI et al., 2025). The
+framework is flexible enough to allow the use of advanced planning (Gu et al., 2025), multi-agent
+(Motwani et al., 2025), or tree-search methods (Koh et al., 2024b); future work will also focus on
+providing improved integration support for such search-based agent architectures.
+REAL is designed for extensibility, and the task suite can be expanded with scenarios requiring more
+sophisticated long horizon reasoning (Chen et al., 2025) or cross-application workflows (Drouin et al.,
+2024; Bonatti et al., 2024; Xu et al., 2024) as agents improve. We acknowledge current limitations,
+including the finite set of 11 environments and the focus specifically on web-based interactions,
+14
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+which represent only a subset of potential agent applications. However, REAL delivers an important,
+rigorous, and accessible framework designed to bridge the gap between current research and practical
+deployment. Our goal is to drive the development of autonomous agents (Putta et al., 2024), and
+REAL provides the benchmark and framework necessary to evaluate and train these systems to
+improve their capability and reliability for important real-world applications.
+Acknowledgments
+We would like to thank Milind Maiti, Harshit Sikchi, Julia Kiseleva, Dylan Bowman, Jack Bai, Andrew
+Gritsevskiy, Matthew Tang, and Lucas Vium for valuable discussions. The websites and configurations
+are designed under the principles of fair use to serve as tools for research and development.
+References
+Deepak Bhaskar Acharya, Karthigeyan Kuppan, and B Divya. Agentic ai: Autonomous intelligence for
+complex goals–a comprehensive survey. IEEE Access, 2025.
+Usman Anwar, Abulhair Saparov, Javier Rando, Daniel Paleka, Miles Turpin, Peter Hase, Ekdeep Singh
+Lubana, Erik Jenner, Stephen Casper, Oliver Sourbut, Benjamin L. Edelman, Zhaowei Zhang, Mario
+Günther, Anton Korinek, Jose Hernandez-Orallo, Lewis Hammond, Eric Bigelow, Alexander Pan,
+Lauro Langosco, Tomasz Korbak, Heidi Zhang, Ruiqi Zhong, Seán Ó hÉigeartaigh, Gabriel Recchia,
+Giulio Corsi, Alan Chan, Markus Anderljung, Lilian Edwards, Aleksandar Petrov, Christian Schroeder
+de Witt, Sumeet Ramesh Motwani, Yoshua Bengio, Danqi Chen, Philip H. S. Torr, Samuel Albanie,
+Tegan Maharaj, Jakob Foerster, Florian Tramer, He He, Atoosa Kasirzadeh, Yejin Choi, and David
+Krueger. Foundational challenges in assuring alignment and safety of large language models, 2024.
+URL https://arxiv.org/abs/2404.09932.
+Léo Boisvert, Megh Thakkar, Maxime Gasse, Massimo Caccia, Thibault Le Sellier De Chezelles,
+Quentin Cappart, Nicolas Chapados, Alexandre Lacoste, and Alexandre Drouin. Workarena++:
+Towards compositional planning and reasoning-based common knowledge work tasks, 2024. URL
+https://arxiv.org/abs/2407.05291.
+Rishi Bommasani, Drew A. Hudson, Ehsan Adeli, Russ Altman, Simran Arora, Sydney von Arx,
+Michael S. Bernstein, Jeannette Bohg, Antoine Bosselut, Emma Brunskill, Erik Brynjolfsson, Shyamal
+Buch, Dallas Card, Rodrigo Castellon, Niladri Chatterji, Annie Chen, Kathleen Creel, Jared Quincy
+Davis, Dora Demszky, Chris Donahue, Moussa Doumbouya, Esin Durmus, Stefano Ermon, John
+Etchemendy, Kawin Ethayarajh, Li Fei-Fei, and Chelsea Finn. On the opportunities and risks of
+foundation models, 2022. URL https://arxiv.org/abs/2108.07258.
+Rogerio Bonatti, Dan Zhao, Francesco Bonacci, Dillon Dupont, Sara Abdali, Yinheng Li, Yadong Lu,
+Justin Wagle, Kazuhito Koishida, Arthur Bucker, Lawrence Jang, and Zack Hui. Windows agent
+arena: Evaluating multi-modal os agents at scale, 2024. URL https://arxiv.org/abs/2409.08264.
+Greg Brockman, Vicki Cheung, Ludwig Pettersson, Jonas Schneider, John Schulman, Jie Tang, and
+Wojciech Zaremba. Openai gym. 2016. URL http://arxiv.org/abs/1606.01540.
+Erik Brynjolfsson, Danielle Li, and Lindsey Raymond. Generative ai at work. The Quarterly Journal of
+Economics, page qjae044, 2025.
+Baian Chen, Chang Shu, Ehsan Shareghi, Nigel Collier, Karthik Narasimhan, and Shunyu Yao. Fireact:
+Toward language agent fine-tuning, 2023. URL https://arxiv.org/abs/2310.05915.
+15
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Kevin Chen, Marco Cusumano-Towner, Brody Huval, Aleksei Petrenko, Jackson Hamburger, Vladlen
+Koltun, and Philipp Krähenbühl. Reinforcement learning for long-horizon interactive llm agents,
+2025. URL https://arxiv.org/abs/2502.01600.
+Thibault Le Sellier De Chezelles, Maxime Gasse, Alexandre Drouin, Massimo Caccia, Léo Boisvert,
+Megh Thakkar, Tom Marty, Rim Assouel, Sahar Omidi Shayegan, Lawrence Keunho Jang, Xing Han
+Lù, Ori Yoran, Dehan Kong, Frank F. Xu, Siva Reddy, Quentin Cappart, Graham Neubig, Ruslan
+Salakhutdinov, Nicolas Chapados, and Alexandre Lacoste. The browsergym ecosystem for web
+agent research, 2025. URL https://arxiv.org/abs/2412.05467.
+Casey Chu, David Medina, Hyeonwoo Noh, Noah Jorgensen, Reiichiro Nakano, and Sarah Yoo.
+Operator system card, January 2025. URL https://cdn.openai.com/operator_system_card.pdf.
+Michael Chui, Eric Hazan, Roger Roberts, Alex Singla, and Kate Smaje. The economic potential of
+generative ai. 2023.
+DeepSeek-AI, Daya Guo, Dejian Yang, Haowei Zhang, Junxiao Song, Ruoyu Zhang, Runxin Xu, Qihao
+Zhu, Shirong Ma, Peiyi Wang, Xiao Bi, Xiaokang Zhang, Xingkai Yu, Yu Wu, Z. F. Wu, Zhibin
+Gou, and Zhihong Shao. Deepseek-r1: Incentivizing reasoning capability in llms via reinforcement
+learning, 2025. URL https://arxiv.org/abs/2501.12948.
+Xiang Deng, Yu Gu, Boyuan Zheng, Shijie Chen, Samuel Stevens, Boshi Wang, Huan Sun, and Yu Su.
+Mind2web: Towards a generalist agent for the web. In NeurIPS Datasets and Benchmarks Track,
+2023. URL https://openreview.net/forum?id=kiYqbO3wqw.
+Alexandre Drouin, Maxime Gasse, Massimo Caccia, Issam H. Laradji, Manuel Del Verme, Tom Marty,
+Léo Boisvert, Megh Thakkar, Quentin Cappart, David Vazquez, Nicolas Chapados, and Alexandre
+Lacoste. Workarena: How capable are web agents at solving common knowledge work tasks?,
+2024.
+Aaron Grattafiori, Abhimanyu Dubey, Abhinav Jauhri, Abhinav Pandey, Abhishek Kadian, Ahmad
+Al-Dahle, Aiesha Letman, Akhil Mathur, Alan Schelten, Alex Vaughan, Amy Yang, Angela Fan,
+Anirudh Goyal, Anthony Hartshorn, Aobo Yang, and Archi Mitra. The llama 3 herd of models, 2024.
+URL https://arxiv.org/abs/2407.21783.
+Yu Gu, Kai Zhang, Yuting Ning, Boyuan Zheng, Boyu Gou, Tianci Xue, Cheng Chang, Sanjari Srivastava,
+Yanan Xie, Peng Qi, Huan Sun, and Yu Su. Is your llm secretly a world model of the internet?
+model-based planning for web agents, 2025. URL https://arxiv.org/abs/2411.06559.
+Kunal Handa, Alex Tamkin, Miles McCain, Saffron Huang, Esin Durmus, Sarah Heck, Jared Mueller,
+Jerry Hong, Stuart Ritchie, Tim Belonax, Kevin K. Troy, Dario Amodei, Jared Kaplan, Jack Clark,
+and Deep Ganguli. Which economic tasks are performed with ai? evidence from millions of claude
+conversations, 2025. URL https://arxiv.org/abs/2503.04761.
+Siyuan Hu, Mingyu Ouyang, Difei Gao, and Mike Zheng Shou. The dawn of gui agent: A preliminary
+case study with claude 3.5 computer use, 2024. URL https://arxiv.org/abs/2411.10323.
+Aaron Jaech, Adam Kalai, Adam Lerer, Adam Richardson, Ahmed El-Kishky, Aiden Low, Alec Helyar, Aleksander Madry, Alex Beutel, Alex Carney, et al. Openai o1 system card. arXiv preprint
+arXiv:2412.16720, 2024.
+Jared Kaplan, Sam McCandlish, Tom Henighan, Tom B. Brown, Benjamin Chess, Rewon Child, Scott
+Gray, Alec Radford, Jeffrey Wu, and Dario Amodei. Scaling laws for neural language models, 2020.
+URL https://arxiv.org/abs/2001.08361.
+16
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Sayash Kapoor, Benedikt Stroebl, Zachary S. Siegel, Nitya Nadgir, and Arvind Narayanan. Ai agents
+that matter, 2024. URL https://arxiv.org/abs/2407.01502.
+Su Kara, Fazle Faisal, and Suman Nath. Waber: Web agent benchmarking for efficiency and reliability.
+In ICLR 2025 Workshop on Foundation Models in the Wild, 2025.
+Jing Yu Koh, Robert Lo, Lawrence Jang, Vikram Duvvur, Ming Chong Lim, Po-Yu Huang, Graham
+Neubig, Shuyan Zhou, Ruslan Salakhutdinov, and Daniel Fried. Visualwebarena: Evaluating
+multimodal agents on realistic visual web tasks. arXiv preprint arXiv:2401.13649, 2024a.
+Jing Yu Koh, Stephen McAleer, Daniel Fried, and Ruslan Salakhutdinov. Tree search for language
+agent models, 2024b. URL https://jykoh.com/search-agents/paper.pdf.
+Naveen Krishnan. Ai agents: Evolution, architecture, and real-world applications. arXiv preprint
+arXiv:2503.12687, 2025.
+Komal Kumar, Tajamul Ashraf, Omkar Thawakar, Rao Muhammad Anwer, Hisham Cholakkal, Mubarak
+Shah, Ming-Hsuan Yang, Phillip H. S. Torr, Fahad Shahbaz Khan, and Salman Khan. Llm posttraining: A deep dive into reasoning large language models, 2025. URL https://arxiv.org/abs/
+2502.21321.
+Ido Levy, Ben Wiesel, Sami Marreed, Alon Oved, Avi Yaeli, and Segev Shlomov. St-webagentbench: A
+benchmark for evaluating safety and trustworthiness in web agents, 2024. URL https://arxiv.
+org/abs/2410.06703.
+Eric Li and Jim Waldo. Websuite: Systematically evaluating why web agents fail, 2024. URL
+https://arxiv.org/abs/2406.01623.
+Hunter Lightman, Vineet Kosaraju, Yura Burda, Harri Edwards, Bowen Baker, Teddy Lee, Jan Leike,
+John Schulman, Ilya Sutskever, and Karl Cobbe. Let’s verify step by step, 2023. URL https:
+//arxiv.org/abs/2305.20050.
+Evan Zheran Liu, Kelvin Guu, Panupong Pasupat, and Percy Liang. Reinforcement learning on web
+interfaces using workflow-guided exploration. In ICLR, 2018. URL https://openreview.net/
+forum?id=ryTp3f-0-.
+Xiao Liu, Hao Yu, Hanchen Zhang, Yifan Xu, Xuanyu Lei, Hanyu Lai, Yu Gu, Hangliang Ding, Kaiwen
+Men, Kejuan Yang, Shudan Zhang, Xiang Deng, Aohan Zeng, Zhengxiao Du, Chenhui Zhang, Sheng
+Shen, Tianjun Zhang, Yu Su, Huan Sun, Minlie Huang, Yuxiao Dong, and Jie Tang. AgentBench:
+Evaluating LLMs as Agents. October 2023.
+Sami Marreed, Alon Oved, Avi Yaeli, Segev Shlomov, Ido Levy, Aviad Sela, Asaf Adi, and Nir Mashkif.
+Towards enterprise-ready computer using generalist agent, 2025. URL https://arxiv.org/abs/
+2503.01861.
+Timothy R McIntosh, Teo Susnjak, Nalin Arachchilage, Tong Liu, Paul Watters, and Malka N Halgamuge. Inadequacies of large language model benchmarks in the era of generative artificial
+intelligence. arXiv preprint arXiv:2402.09880, 2024.
+Sumeet Ramesh Motwani, Chandler Smith, Rocktim Jyoti Das, Rafael Rafailov, Ivan Laptev, Philip
+H. S. Torr, Fabio Pizzati, Ronald Clark, and Christian Schroeder de Witt. Malt: Improving reasoning
+with multi-agent llm training, 2025. URL https://arxiv.org/abs/2412.01928.
+17
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+OpenAI, :, Aaron Jaech, Adam Kalai, Adam Lerer, Adam Richardson, Ahmed El-Kishky, Aiden Low,
+Alec Helyar, Aleksander Madry, Alex Beutel, Alex Carney, Alex Iftimie, Alex Karpenko, Alex Tachard
+Passos, Alexander Neitz, Alexander Prokofiev, Alexander Wei, Allison Tam, Ally Bennett, Ananya
+Kumar, Andre Saraiva, Andrea Vallone, Andrew Duberstein, Andrew Kondrich, Andrey Mishchenko,
+Andy Applebaum, Angela Jiang, Ashvin Nair, and Barret Zoph. Openai o1 system card, 2024. URL
+https://arxiv.org/abs/2412.16720.
+Pranav Putta, Edmund Mills, Naman Garg, Sumeet Motwani, Chelsea Finn, Divyansh Garg, and
+Rafael Rafailov. Agent q: Advanced reasoning and learning for autonomous ai agents, 2024. URL
+https://arxiv.org/abs/2408.07199.
+Zehan Qi, Xiao Liu, Iat Long Iong, Hanyu Lai, Xueqiao Sun, Wenyi Zhao, Yu Yang, Xinyue Yang,
+Jiadai Sun, Shuntian Yao, Tianjie Zhang, Wei Xu, Jie Tang, and Yuxiao Dong. Webrl: Training
+llm web agents via self-evolving online curriculum reinforcement learning, 2025. URL https:
+//arxiv.org/abs/2411.02337.
+Matthew Renze and Erhan Guven. Self-reflection in llm agents: Effects on problem-solving performance. arXiv preprint arXiv:2405.06682, 2024.
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov. Proximal policy
+optimization algorithms, 2017. URL https://arxiv.org/abs/1707.06347.
+Tianlin Shi, Andrej Karpathy, Linxi Fan, Jonathan Hernandez, and Percy Liang. World of bits: An
+open-domain platform for web-based agents. In ICML, 2017. URL https://proceedings.mlr.
+press/v70/shi17a.html.
+Noah Shinn, Federico Cassano, Edward Berman, Ashwin Gopinath, Karthik Narasimhan, and Shunyu
+Yao. Reflexion: Language agents with verbal reinforcement learning, 2023.
+Paloma Sodhi, S. R. K. Branavan, Yoav Artzi, and Ryan McDonald. Step: Stacked llm policies for web
+actions, 2024. URL https://arxiv.org/abs/2310.03720.
+Yueqi Song, Frank Xu, Shuyan Zhou, and Graham Neubig. Beyond browsing: Api-based web agents,
+2025. URL https://arxiv.org/abs/2410.16464.
+Hongjin Su, Ruoxi Sun, Jinsung Yoon, Pengcheng Yin, Tao Yu, and Sercan Ö. Arık. Learn-byinteract: A data-centric framework for self-adaptive agents in realistic environments, 2025. URL
+https://arxiv.org/abs/2501.10893.
+Bowen Wang, Xinyuan Wang, Jiaqi Deng, Tianbao Xie, Ryan Li, Yanzhe Zhang, Gavin Li, Toh Jing
+Hua, Ion Stoica, Wei-Lin Chiang, Diyi Yang, Yu Su, Yi Zhang, Zhiguo Wang, Victor Zhong, and Tao
+Yu. Computer agent arena, 2025.
+Qingyun Wu, Gagan Bansal, Jieyu Zhang, Yiran Wu, Beibin Li, Erkang Zhu, Li Jiang, Xiaoyun Zhang,
+Shaokun Zhang, Jiale Liu, et al. Autogen: Enabling next-gen llm applications via multi-agent
+conversation. arXiv preprint arXiv:2308.08155, 2023.
+Boming Xia, Qinghua Lu, Liming Zhu, Zhenchang Xing, Dehai Zhao, and Hao Zhang. Evaluationdriven development of llm agents: A process model and reference architecture, 2025. URL
+https://arxiv.org/abs/2411.13768.
+Violet Xiang, Charlie Snell, Kanishk Gandhi, Alon Albalak, Anikait Singh, Chase Blagden, Duy Phung,
+Rafael Rafailov, Nathan Lile, Dakota Mahan, Louis Castricato, Jan-Philipp Franken, Nick Haber,
+and Chelsea Finn. Towards system 2 reasoning in llms: Learning how to think with meta chain-ofthought, 2025. URL https://arxiv.org/abs/2501.04682.
+18
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Frank F Xu, Yufan Song, Boxuan Li, Yuxuan Tang, Kritanjali Jain, Mengxue Bao, Zora Z Wang,
+Xuhui Zhou, Zhitong Guo, Murong Cao, et al. Theagentcompany: Benchmarking llm agents on
+consequential real world tasks, 2024. URL https://arxiv. org/abs/2412.14161, 2024.
+Ke Yang, Yao Liu, Sapana Chaudhary, Rasool Fakoor, Pratik Chaudhari, George Karypis, and Huzefa
+Rangwala. Agentoccam: A simple yet strong baseline for llm-based web agents, 2024. URL
+https://arxiv.org/abs/2410.13825.
+Shunyu Yao, Howard Chen, John Yang, and Karthik Narasimhan. Webshop: Towards scalable realworld web interaction with grounded language agents, 2023a. URL https://arxiv.org/abs/2207.
+01206.
+Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, Izhak Shafran, Karthik Narasimhan, and Yuan Cao.
+React: Synergizing reasoning and acting in language models, 2023b.
+Lareina Yee, Michael Chui, Roger Roberts, and S Xu. Why agents are the next frontier of ai, 2024.
+Asaf Yehudai, Lilach Eden, Alan Li, Guy Uziel, Yilun Zhao, Roy Bar-Haim, Arman Cohan, and Michal
+Shmueli-Scheuer. Survey on evaluation of llm-based agents, 2025. URL https://arxiv.org/abs/
+2503.16416.
+Ori Yoran, Samuel Joseph Amouyal, Chaitanya Malaviya, Ben Bogin, Ofir Press, and Jonathan Berant.
+Assistantbench: Can web agents solve realistic and time-consuming tasks?, 2024. URL https://arxiv.
+org/abs/2407.15711, 3(8), 2024.
+Eric Zelikman, Yuhuai Wu, Jesse Mu, and Noah D. Goodman. Star: Bootstrapping reasoning with
+reasoning, 2022. URL https://arxiv.org/abs/2203.14465.
+Jianguo Zhang, Tian Lan, Rithesh Murthy, Zhiwei Liu, Weiran Yao, Ming Zhu, Juntao Tan, Thai Hoang,
+Zuxin Liu, Liangwei Yang, Yihao Feng, Shirley Kokane, Tulika Awalgaonkar, Juan Carlos Niebles,
+Silvio Savarese, Shelby Heinecke, Huan Wang, and Caiming Xiong. Agentohana: Design unified data
+and training pipeline for effective agent learning, 2024a. URL https://arxiv.org/abs/2402.15506.
+Yao Zhang, Zijian Ma, Yunpu Ma, Zhen Han, Yu Wu, and Volker Tresp. Webpilot: A versatile and
+autonomous multi-agent system for web task execution with strategic exploration, 2024b. URL
+https://arxiv.org/abs/2408.15978.
+Lianmin Zheng, Wei-Lin Chiang, Ying Sheng, Siyuan Zhuang, Zhanghao Wu, Yonghao Zhuang, Zi Lin,
+Zhuohan Li, Dacheng Li, Eric P. Xing, Hao Zhang, Joseph E. Gonzalez, and Ion Stoica. Judging
+llm-as-a-judge with mt-bench and chatbot arena. Conference on Neural Information Processing
+Systems Track on Datasets and Benchmark, 2023.
+Shuyan Zhou, Frank F. Xu, Hao Zhu, Xuhui Zhou, Robert Lo, Abishek Sridhar, Xianyi Cheng, Tianyue
+Ou, Yonatan Bisk, Daniel Fried, Uri Alon, and Graham Neubig. Webarena: A realistic web environment for building autonomous agents. In ICLR, 2024.
+Yifei Zhou, Song Jiang, Yuandong Tian, Jason Weston, Sergey Levine, Sainbayar Sukhbaatar, and
+Xian Li. Sweet-rl: Training multi-turn llm agents on collaborative reasoning tasks, 2025. URL
+https://arxiv.org/abs/2503.15478.
+Mingchen Zhuge, Changsheng Zhao, Dylan Ashley, Wenyi Wang, Dmitrii Khizbullin, Yunyang Xiong,
+Zechun Liu, Ernie Chang, Raghuraman Krishnamoorthi, Yuandong Tian, Yangyang Shi, Vikas
+Chandra, and Jürgen Schmidhuber. Agent-as-a-judge: Evaluate agents with agents, 2024. URL
+https://arxiv.org/abs/2410.10934.
+19
+REAL: Benchmarking Autonomous Agents on Deterministic Simulations of Real Websites
+Disclaimer
+We will aim to keep improving the benchmark, test suite, and training environment in the near future
+and have strived to acknowledge the enormous strides made by past work in the area. We are not
+affiliated, associated, authorized, endorsed by, or in any way officially connected with the real-world
+companies, brands, or entities represented by the mimicked websites. All company names, logos, and
+trademarks used on the Platform belong to their respective owners. Results and evaluations conducted
+on the Platform are for testing and benchmarking purposes only and should not be construed as
+equivalent to performing actions on actual websites or applications. While we strive to provide
+realistic simulations, we do not guarantee the accuracy, completeness, or currency of the content or
+workflows presented in the mimicked websites. The websites and configurations are designed under
+the principles of fair use to serve as transformative tools for research. Any similarities to real-world
+counterparts are intended only to replicate core interaction flows in a controlled environment and do
+not represent the full functionality or appearance of the actual websites.
+20
