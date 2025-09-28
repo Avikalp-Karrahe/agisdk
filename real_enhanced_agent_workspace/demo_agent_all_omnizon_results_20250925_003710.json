@@ -1,0 +1,178 @@
+{
+  "agent": "Demo Agent (gpt-4o)",
+  "test_completed": "2025-09-25T00:37:10.202312",
+  "summary": {
+    "total_tasks": 10,
+    "successful_tasks": 8,
+    "failed_tasks": 2,
+    "success_rate": 80.0,
+    "total_duration": 274.58,
+    "avg_duration_per_task": 24.75
+  },
+  "difficulty_breakdown": {
+    "easy": {
+      "total": 3,
+      "successful": 3,
+      "success_rate": 100.0,
+      "avg_duration": 0.00910790761311849
+    },
+    "medium": {
+      "total": 2,
+      "successful": 2,
+      "success_rate": 100.0,
+      "avg_duration": 0.016201376914978027
+    },
+    "hard": {
+      "total": 5,
+      "successful": 3,
+      "success_rate": 60.0,
+      "avg_duration": 49.494728326797485
+    }
+  },
+  "successful_tasks": [
+    "webclones.omnizon-1",
+    "webclones.omnizon-2",
+    "webclones.omnizon-3",
+    "webclones.omnizon-4",
+    "webclones.omnizon-5",
+    "webclones.omnizon-7",
+    "webclones.omnizon-8",
+    "webclones.omnizon-10"
+  ],
+  "failed_tasks": [
+    "webclones.omnizon-6",
+    "webclones.omnizon-9"
+  ],
+  "detailed_results": [
+    {
+      "task_name": "webclones.omnizon-1",
+      "goal": "Search for 'laptop' and display first result",
+      "difficulty": "easy",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 3,
+      "actions_extracted": 4,
+      "duration": 0.012884855270385742,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:35.638591",
+      "exp_dir": "results/2025-09-24_22-21-14_DemoAgentArgs_on_webclones.omnizon-1_111_5b9fa0a259e4483491d02a811f49b074"
+    },
+    {
+      "task_name": "webclones.omnizon-2",
+      "goal": "Search smartphones, add first two to cart, buy third",
+      "difficulty": "medium",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 20,
+      "actions_extracted": 21,
+      "duration": 0.010703086853027344,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:38.653510",
+      "exp_dir": "results/2025-09-24_22-27-22_DemoAgentArgs_on_webclones.omnizon-2_962_c66d7ee4ca454a008295acdf48d7bb2a"
+    },
+    {
+      "task_name": "webclones.omnizon-3",
+      "goal": "Browse Headphones category and retrieve listings",
+      "difficulty": "easy",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 3,
+      "actions_extracted": 4,
+      "duration": 0.004287004470825195,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:41.662910",
+      "exp_dir": "results/2025-09-24_22-30-16_DemoAgentArgs_on_webclones.omnizon-3_373_f54731bc522842d88249134366c3c2fb"
+    },
+    {
+      "task_name": "webclones.omnizon-4",
+      "goal": "Add Marshall speaker + Michael Kors watch, checkout",
+      "difficulty": "hard",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 18,
+      "actions_extracted": 19,
+      "duration": 0.018527746200561523,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:44.683524",
+      "exp_dir": "results/2025-09-24_22-31-21_DemoAgentArgs_on_webclones.omnizon-4_418_c71f67e89dcb4f6eafb6430b00eb83e0"
+    },
+    {
+      "task_name": "webclones.omnizon-5",
+      "goal": "Search KTC Gaming Monitor and display specs",
+      "difficulty": "hard",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 5,
+      "actions_extracted": 6,
+      "duration": 0.015726089477539062,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:47.704933",
+      "exp_dir": "results/2025-09-24_22-34-29_DemoAgentArgs_on_webclones.omnizon-5_976_deb9bd6845c7471fa888340e9c757308"
+    },
+    {
+      "task_name": "webclones.omnizon-6",
+      "goal": "Compare Samsung phones, buy better value",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 14,
+      "actions_extracted": 15,
+      "duration": 0.012307882308959961,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:50.722512",
+      "exp_dir": "results/2025-09-24_22-35-36_DemoAgentArgs_on_webclones.omnizon-6_910_6b88e6515bc84d6ca27dea4ba0fc4a7d"
+    },
+    {
+      "task_name": "webclones.omnizon-7",
+      "goal": "Find most expensive product in Gaming category",
+      "difficulty": "medium",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 2,
+      "actions_extracted": 3,
+      "duration": 0.02169966697692871,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:53.749508",
+      "exp_dir": "results/2025-09-24_22-38-20_DemoAgentArgs_on_webclones.omnizon-7_205_1fd73ca7fa8b4972b738018fc78457e4"
+    },
+    {
+      "task_name": "webclones.omnizon-8",
+      "goal": "Search Espresso Machine, buy cheapest with quantity 5",
+      "difficulty": "easy",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 12,
+      "actions_extracted": 13,
+      "duration": 0.010151863098144531,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:32:56.764890",
+      "exp_dir": "results/2025-09-24_22-38-49_DemoAgentArgs_on_webclones.omnizon-8_394_73104a45c7d040aca3708cbe34c15ff3"
+    },
+    {
+      "task_name": "webclones.omnizon-9",
+      "goal": "Buy PlayStation DualSense with custom payment method",
+      "difficulty": "hard",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 25,
+      "actions_extracted": 26,
+      "duration": 247.4188849925995,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:37:07.188921",
+      "exp_dir": "results/2025-09-25_00-32-59_DemoAgentArgs_on_webclones.omnizon-9_406_9acab6999f1349419c1fd5f17606a4c3"
+    },
+    {
+      "task_name": "webclones.omnizon-10",
+      "goal": "Buy any product with max quantity and latest delivery",
+      "difficulty": "hard",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 8,
+      "actions_extracted": 9,
+      "duration": 0.008194923400878906,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:37:10.202260",
+      "exp_dir": "results/2025-09-24_22-42-55_DemoAgentArgs_on_webclones.omnizon-10_756_788db650ea694844803cb00319de9dbc"
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "test_info": {
+    "timestamp": "2025-09-25T00:47:48.963814",
+    "test_type": "specific_omnizon_gui_test",
+    "tasks_tested": [
+      "webclones.omnizon-6",
+      "webclones.omnizon-9"
+    ],
+    "gui_enabled": true
+  },
+  "analysis": {
+    "total_tasks": 2,
+    "successful_tasks": 1,
+    "success_rate": 50.0,
+    "average_duration": 261.5898666381836,
+    "difficulty_breakdown": {
+      "HARD": {
+        "success_rate": 50.0,
+        "tasks": "1/2"
+      }
+    }
+  },
+  "detailed_results": [
+    {
+      "task_name": "webclones.omnizon-6",
+      "goal": "Compare SAMSUNG Galaxy S24 Ultra and SAMSUNG Galaxy Z Fold 6, buy the better one",
+      "difficulty": "HARD",
+      "success": false,
+      "score": 0.0,
+      "steps_taken": 30,
+      "actions_extracted": 31,
+      "duration": 446.89974904060364,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:46:27.678585",
+      "exp_dir": "results/2025-09-25_00-39-00_DemoAgentArgs_on_webclones.omnizon-6_192_3a7ac03487b2499db16e6b6460b11c72"
+    },
+    {
+      "task_name": "webclones.omnizon-9",
+      "goal": "Buy PlayStation DualSense with custom payment method",
+      "difficulty": "HARD",
+      "success": true,
+      "score": 1.0,
+      "steps_taken": 14,
+      "actions_extracted": 15,
+      "duration": 76.27998423576355,
+      "error_msg": null,
+      "timestamp": "2025-09-25T00:47:48.963781",
+      "exp_dir": "results/2025-09-25_00-46-32_DemoAgentArgs_on_webclones.omnizon-9_699_bee3dee0ea934653869ff1cd0785b644"
+    }
+  ]
+}

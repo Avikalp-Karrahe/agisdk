@@ -1,0 +1,29 @@
+{
+  "timestamp": "20250925_005550",
+  "agent_type": "enhanced_demo_agent",
+  "test_configuration": {
+    "model": "gpt-4o",
+    "tasks": [
+      "webclones.omnizon-6",
+      "webclones.omnizon-9"
+    ],
+    "gui_enabled": true,
+    "max_steps": 50,
+    "timeout": 300
+  },
+  "summary": {
+    "total_tasks": 2,
+    "successful_tasks": 0,
+    "success_rate": 0.0
+  },
+  "individual_results": {
+    "webclones.omnizon-6": {
+      "success": false,
+      "error": "No results returned"
+    },
+    "webclones.omnizon-9": {
+      "success": false,
+      "error": "No results returned"
+    }
+  }
+}
